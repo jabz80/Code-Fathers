@@ -1,46 +1,131 @@
-#root {
-  max-width: 1280px;
+* {
+  box-sizing: border-box;
+}
+
+body {
   margin: 0 auto;
-  padding: 2rem;
+  line-height: 1.6;
+  font-size: 24px;
+  color: #2B061E;
+  background:#D9BFC0;;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+  
+h1, h2, h3 {
+  line-height:1.2;
+}
+
+nav > a {
+  margin-right: 0.5rem;
+}
+
+header, footer, main {
+  padding: 1rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  flex: 1;
+}
+
+.snack-main {
+  justify-content: flex-start;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+input[type=text] {
+  margin-left: 0.1rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+.note-holder {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  justify-content: flex-start;
+}
+
+.notes-details-holder {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  max-width: 100%;
+}
+
+.note-card {
+  margin: 0.5rem;
+  border: 1px solid #444;
+  border-radius: 5%;
+  box-shadow: 5px 5px 5px #777;
+  width: 16rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.icon {
+  color: #2B061E;
+  border: 1px solid #2B061E;
+  border-radius: 5px;
+  width: 2rem;
+  height: 2rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+p > span, p > button {
+  margin-right: 0.2rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.snack-filters {
+  margin-bottom: 2rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.close-title {
+  margin-bottom: 0.1rem;
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-nav{
+form {
+  min-height: 20vh;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+form input,
+form button {
+padding: 0.5rem;
+font-size: 1.2rem;
+border: none;
+background: white;
+margin: 10px;
+}
+
+form button {
+  color: #875053;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 5px;
+}
+
+form button:hover {
+  background: #2B061E;
+  color: white;
 }

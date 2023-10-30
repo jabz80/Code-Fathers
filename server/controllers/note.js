@@ -3,10 +3,10 @@ const Note = require("../models/Note.js");
 async function index(req, res) {
     try {
         const notes = await Note.getAll();
-        res.status(200).send({ data: notes });
+        res.status(200).json(notes);
 
     } catch (err) {
-        res.status(500).send({ error: err.message })
+        res.status(500).json(err.message)
     }
 }
 
@@ -14,9 +14,9 @@ async function show(req, res) {
     try {
         const id = parseInt(req.params.id);
         const note = await Note.getOneById(id);
-        res.status(200).send({ data: note });
+        res.status(200).json(note);
     } catch (err) {
-        res.status(404).send({ "error": err.message })
+        res.status(404).json(err.message)
     }
 }
 
@@ -24,9 +24,9 @@ const create = async (req, res) => {
     try {
         const data = req.body
         const newNote = await Note.create(data)
-        res.status(201).send({ data: newNote })
+        res.status(201).json(newNote)
     } catch (err) {
-        res.status(400).send({ "error": err.message })
+        res.status(400).json(err.message)
     }
 }
 

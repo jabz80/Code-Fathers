@@ -28,7 +28,7 @@ export default function CalendarApp(){
         console.log(title, description)
         // Add event function using input value here
         if (title.length > 0 && description.length > 0) {
-            fetch('http://localhost:3000/calendar', {
+            fetch('http://localhost:3000/tasks', {
                 method: 'POST',
                 body: JSON.stringify({
                     task_title: title,
