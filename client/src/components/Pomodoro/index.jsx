@@ -66,7 +66,7 @@ export default function Pomodoro() {
         } else {
           setSeconds((prevState) => prevState - 1);
         }
-      }, 100);
+      }, 1000);
     }
   }, [seconds, isRunning]);
 
