@@ -1,9 +1,58 @@
 body {
-    background-color: #1e212d;
-    color: #eabf9f;
-    height: 100vh;
+    background-color: #f7f4ed;
 }
 
-p {
-    font-size: 20px;
-}
+.pomodoro {
+    background-color: #100650;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.399);
+    padding: 50px;
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 100px;
+    text-align: center;
+  }
+
+  .pomodoro .CircularProgressbar-path {
+    filter: drop-shadow(0 0 4px rgba(241, 224, 224, 0.5)); 
+  }
+  
+  .pomodoro h1 {
+    font-size: 24px;
+    margin: 0;
+    color: white;
+  }
+  
+  .pomodoro p {
+    font-size: 16px;
+    color: white;
+  }
+  
+  .pomodoro button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 20px;
+    cursor: pointer;
+  }
+  
+  .pomodoro button:hover {
+    background-color: #0056b3;
+  }
+  
+  .pomodoro .rc-slider {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .pomodoro h2 {
+    font-size: 18px;
+    margin: 10px 0;
+    color: white;
+  }
+  
+  
