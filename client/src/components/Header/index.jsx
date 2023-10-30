@@ -6,13 +6,13 @@ export default function Header() {
   return (
     <main>
       <header>
-        <h1>NAVIGATION</h1>
+        <h1>Crammer Revision</h1>
         <nav>
-          <p>Codefathers</p>
           <NavLink to="/" style={styles}><button>Home</button></NavLink>
           <NavLink to="/about" style={styles}><button>About</button></NavLink>
           <NavLink to="/calendar" style={styles}><button>Calendar</button></NavLink>
           <NavLink to="/notes" style={styles}><button>Notes</button></NavLink>
+          <NavLink to="/timer" style={styles}><button>Pomodoro Timer</button></NavLink>
         </nav>
       </header>
       <Outlet />
