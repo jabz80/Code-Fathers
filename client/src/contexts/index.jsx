@@ -19,5 +19,6 @@ export const ExampleProvider = ({ children }) => {
     </ExampleContext.Provider>
   );
 };
+
 //step 3: we have to create a way for components to consume the shared data
 export const useExample = () => useContext(ExampleContext);

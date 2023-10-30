@@ -1,46 +1,184 @@
-#root {
-  max-width: 1280px;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300&display=swap');
+
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  color: #2B061E;
+  background: #ecf0f3;
+}
+
+.navbar {
+  display: flex; 
+  justify-content: space-around;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  background-color: #d8ddd8;
+  width: 98vw;
+  border-radius: 10px;
+}
+
+.navbar h1 {
+  color: rgb(11, 10, 10);
+  font-size: 40px;
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+}
+
+.navbar li {
+  padding-left: 1rem;
+  margin: 10px;
+}
+
+.navbar li button {
+  text-decoration: none;
+  font-size: 20px;
+  width: 150px;
+  background-color: #04AA6D;
+  transition: transform 0.3s, background-color 0.3s; 
+}
+
+.navbar li button:hover {
+  color: #ffffff;
+  background-color: #69ab91; 
+  transform: scale(0.9); /* Reduce the size to 90% when hovering */
+}
+
+.calender {
+  text-align: center;
+  margin: 20px;
+}
+
+input[type=text], select, textarea {
+  width: 95vw; 
+  padding: 12px; 
+  border: 1px solid #ccc; 
+  border-radius: 10px; 
+  box-sizing: border-box; 
+  margin-top: 6px; 
+  margin-bottom: 16px;
+  resize: vertical 
+}
+
+
+input[type=submit] {
+  background-color: #04AA6D;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s; 
+
+}
+
+
+input[type=submit]:hover {
+  background-color: #69ab91;
+  transform: scale(0.9); /* Reduce the size to 90% when hovering */
+
+}
+
+
+.container {
+  border-radius: 10px;
+  background-color: #d8ddd8;
+  padding: 20px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin: 0 auto;
-  padding: 2rem;
+  flex: 1;
+}
+
+
+input[type=text] {
+  margin-left: 0.1rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+.note-holder {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  justify-content: flex-start;
+}
+
+.notes-details-holder {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  max-width: 100%;
+}
+
+.note-card {
+  margin: 0.5rem;
+  border: 1px solid #444;
+  border-radius: 5%;
+  box-shadow: 5px 5px 5px #777;
+  width: 16rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* .icon {
+  color: #2B061E;
+  border: 1px solid #2B061E;
+  border-radius: 5px;
+  width: 2rem;
+  height: 2rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+p > span, p > button {
+  margin-right: 0.2rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.snack-filters {
+  margin-bottom: 2rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.close-title {
+  margin-bottom: 0.1rem;
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-nav{
+form {
+  min-height: 20vh;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
+
+form input,
+form button {
+padding: 0.5rem;
+font-size: 1.2rem;
+border: none;
+background: white;
+margin: 10px;
+}
+
+form button {
+  color: #875053;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 5px;
+}
+
+form button:hover {
+  background: #2B061E;
+  color: white;
+} */
