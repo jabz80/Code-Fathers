@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Header } from './components';
+import { Footer } from './components';
 import './App.css';
 import { HomePage, AboutPage, NotFoundPage, CalendarPage, NotesPage, AddNotePage, PomodoroPage } from './pages';
 import { ExampleProvider } from './contexts';
@@ -22,6 +23,7 @@ function App() {
           <Route path="/*" element={<NotFoundPage />} />
         </Route>
       </Routes>
+      <Footer />
     </ExampleProvider>
   );
 }

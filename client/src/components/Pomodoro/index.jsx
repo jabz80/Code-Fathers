@@ -73,7 +73,7 @@ export default function Pomodoro() {
   const percentage = ((minutes * 60 + seconds) / (revisionTime  * 60)) * 100;
 
   return (
-    <>
+    <div className="pomodoro">
       <div>
         <h1>Pomodoro Timer</h1>
         {!displayMessage && <p>Time to Revise</p>}
@@ -113,6 +113,6 @@ export default function Pomodoro() {
           onChange={handleBreakChange}
         />
       </div>
-    </>
+    </div>
   );
 }

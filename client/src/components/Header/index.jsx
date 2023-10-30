@@ -23,7 +23,7 @@ export default function Header() {
               <NavLink to="/notes" style={styles}><button>Notes</button></NavLink>
             </li>
             <li>
-            <NavLink to="/timer" style={styles}><button>Pomodoro Timer</button></NavLink>
+            <NavLink to="/timer" style={styles}><button>Timer</button></NavLink>
             </li>
           </ul>
         </nav>
