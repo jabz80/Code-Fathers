@@ -8,12 +8,11 @@ export default function Header() {
       <header>
         <h1>NAVIGATION</h1>
         <nav>
-          <NavLink to="/" style={styles}>
-            Home
-          </NavLink>
-          <NavLink to="/about" style={styles}>
-            About
-          </NavLink>
+          <p>Codefathers</p>
+          <NavLink to="/" style={styles}><button>Home</button></NavLink>
+          <NavLink to="/about" style={styles}><button>About</button></NavLink>
+          <NavLink to="/calendar" style={styles}><button>Calendar</button></NavLink>
+          <NavLink to="/about" style={styles}><button>Notes</button></NavLink>
         </nav>
       </header>
       <Outlet />
