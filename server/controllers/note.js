@@ -37,7 +37,7 @@ async function update(req, res) {
         const noteToUpdate = await Note.getOneById(id)
         req.body.user_id ||= noteToUpdate.user_id
         req.body.title ||= noteToUpdate.title
-        req.body.note ||= noteToUpdate.note
+        req.body.context ||= noteToUpdate.context
         req.body.created_at ||= noteToUpdate.created_at
         req.body.updated_at ||= noteToUpdate.updated_at
 
