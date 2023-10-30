@@ -8,10 +8,18 @@ export default function CalendarApp(){
     const [description, setDescription] = useState('')
     const [message, setMessage] = useState('')
     const [userId, setUserId] = useState('')
+    const [data, setData] = useState(null)
 
-
-    function handleChange(e){
+    async function handleChange(e){
+        setData(null)
         setDate(e)
+        let date = e.toLocaleDateString()
+        date = date.replaceAll("/", "")
+        date = parseInt(date)
+        console.log(date)
+        const response = await fetch(`http://localhost:3000/tasks/date/${date}`)
+        const tasks = await response.json()
+        setData(tasks)
     }
 
     function handleUserIdInput(e){
@@ -88,7 +96,15 @@ export default function CalendarApp(){
             <input type='submit' value="Add Event" />
             <p className='message'>{message}</p>
         </form>
-        </>
-    )
 
+        <div>
+            {Array.isArray(data) && data.map((item, index) => (
+            <div key={index}>
+            <h1>{item.task_title}</h1>
+            <p>{item.task_description}</p>
+            </div>
+            ))}
+        </div>
+    </>
+    )
 }

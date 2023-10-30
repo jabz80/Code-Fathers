@@ -60,6 +60,15 @@ class Task {
     }
     return new Task(response.rows[0]);
   }
+
+  static async getByDate(year, month, day){
+    const response = await db.query("SELECT * FROM tasks WHERE EXTRACT(YEAR FROM task_date)=$1 AND EXTRACT(MONTH FROM task_date)=$2 AND EXTRACT(DAY FROM task_date)=$3;", [year, month, day])
+    if (response.rows.length === 0) {
+      throw new Error('No tasks available.');
+    }
+    return response.rows.map((g) => new Task(g));
+  }
+
 }
 
 module.exports = Task;
