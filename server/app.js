@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 
-const exampleRouter = require("./routers/examples");
+const noteRouter = require("./routers/note");
 
 const app = express();
 
@@ -10,10 +10,10 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.send("This is an example API");
+  res.send("This is the notes API");
 });
 
 // Routes
-app.use("/examples", exampleRouter);
+app.use("/notes", noteRouter);
 
 module.exports = app;
