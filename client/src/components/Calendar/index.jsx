@@ -7,10 +7,16 @@ export default function CalendarApp(){
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [message, setMessage] = useState('')
+    const [userId, setUserId] = useState('')
 
 
     function handleChange(e){
         setDate(e)
+    }
+
+    function handleUserIdInput(e){
+        const newInput = e.target.value
+        setUserId(newInput)
     }
 
     function handleTitleInput(e){
@@ -28,9 +34,10 @@ export default function CalendarApp(){
         console.log(title, description)
         // Add event function using input value here
         if (title.length > 0 && description.length > 0) {
-            fetch('http://localhost:3000/calendar', {
+            fetch('http://localhost:3000/tasks', {
                 method: 'POST',
                 body: JSON.stringify({
+                    user_id: userId,
                     task_title: title,
                     task_description: description,
                     task_date: date
@@ -55,6 +62,7 @@ export default function CalendarApp(){
             });
             setTitle('')
             setDescription('')
+            setUserId('')
         } else {
             setMessage('Please enter an event.');
             setTimeout(() => {
@@ -68,6 +76,9 @@ export default function CalendarApp(){
         <Calendar onChange={handleChange} value={date} />
         <p>Selected date is {date.toLocaleDateString()}</p>
         <form onSubmit={handleSubmit}>
+            <label htmlFor='userId'>User ID</label>
+            <input type='text' onChange={handleUserIdInput} id='userId'required />
+            <br></br>
             <label htmlFor='title'>Add event title here:</label>
             <input type='text' onChange={handleTitleInput} id='title'required />
             <br></br>
