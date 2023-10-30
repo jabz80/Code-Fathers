@@ -3,9 +3,9 @@ const Task = require('../models/Task.js');
 async function index(req, res) {
   try {
     const tasks = await Task.getAll();
-    res.status(200).send({ data: tasks });
+    res.status(200).json(tasks);
   } catch (err) {
-    res.status(500).send({ error: err.message });
+    res.status(500).json({ error: err.message });
   }
 }
 
@@ -13,9 +13,9 @@ async function show(req, res) {
   try {
     const id = parseInt(req.params.id);
     const task = await Task.getOneById(id);
-    res.status(200).send({ data: task });
+    res.status(200).json(task);
   } catch (err) {
-    res.status(404).send({ error: err.message });
+    res.status(404).json({ error: err.message });
   }
 }
 
@@ -23,7 +23,7 @@ const create = async (req, res) => {
   try {
     const data = req.body;
     const newTask = await Task.create(data);
-    res.status(201).send({ data: newTask });
+    res.status(201).send(newTask);
   } catch (err) {
     res.status(400).send({ error: err.message });
   }
