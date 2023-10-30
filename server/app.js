@@ -1,7 +1,8 @@
-const express = require("express");
-const cors = require("cors");
+const express = require('express');
+const cors = require('cors');
 
-const exampleRouter = require("./routers/examples");
+const noteRouter = require('./routers/note');
+const taskRouter = require('./routers/tasks');
 
 const app = express();
 
@@ -9,11 +10,12 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send("This is an example API");
+app.get('/', (req, res) => {
+  res.send('This is the notes API');
 });
 
 // Routes
-app.use("/examples", exampleRouter);
+app.use('/notes', noteRouter);
+app.use('/tasks', taskRouter);
 
 module.exports = app;
