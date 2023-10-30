@@ -7,10 +7,24 @@ export default function CalendarApp(){
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [message, setMessage] = useState('')
+    const [userId, setUserId] = useState('')
+    const [data, setData] = useState(null)
 
-
-    function handleChange(e){
+    async function handleChange(e){
+        setData(null)
         setDate(e)
+        let date = e.toLocaleDateString()
+        date = date.replaceAll("/", "")
+        date = parseInt(date)
+        console.log(date)
+        const response = await fetch(`http://localhost:3000/tasks/date/${date}`)
+        const tasks = await response.json()
+        setData(tasks)
+    }
+
+    function handleUserIdInput(e){
+        const newInput = e.target.value
+        setUserId(newInput)
     }
 
     function handleTitleInput(e){
@@ -28,9 +42,10 @@ export default function CalendarApp(){
         console.log(title, description)
         // Add event function using input value here
         if (title.length > 0 && description.length > 0) {
-            fetch('http://localhost:3000/calendar', {
+            fetch('http://localhost:3000/tasks', {
                 method: 'POST',
                 body: JSON.stringify({
+                    user_id: userId,
                     task_title: title,
                     task_description: description,
                     task_date: date
@@ -55,6 +70,7 @@ export default function CalendarApp(){
             });
             setTitle('')
             setDescription('')
+            setUserId('')
         } else {
             setMessage('Please enter an event.');
             setTimeout(() => {
@@ -68,6 +84,9 @@ export default function CalendarApp(){
         <Calendar onChange={handleChange} value={date} />
         <p>Selected date is {date.toLocaleDateString()}</p>
         <form onSubmit={handleSubmit}>
+            <label htmlFor='userId'>User ID</label>
+            <input type='text' onChange={handleUserIdInput} id='userId'required />
+            <br></br>
             <label htmlFor='title'>Add event title here:</label>
             <input type='text' onChange={handleTitleInput} id='title'required />
             <br></br>
@@ -77,7 +96,15 @@ export default function CalendarApp(){
             <input type='submit' value="Add Event" />
             <p className='message'>{message}</p>
         </form>
-        </>
-    )
 
+        <div>
+            {Array.isArray(data) && data.map((item, index) => (
+            <div key={index}>
+            <h1>{item.task_title}</h1>
+            <p>{item.task_description}</p>
+            </div>
+            ))}
+        </div>
+    </>
+    )
 }
