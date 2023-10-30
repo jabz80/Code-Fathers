@@ -12,7 +12,7 @@ export default function Header() {
           <NavLink to="/" style={styles}><button>Home</button></NavLink>
           <NavLink to="/about" style={styles}><button>About</button></NavLink>
           <NavLink to="/calendar" style={styles}><button>Calendar</button></NavLink>
-          <NavLink to="/about" style={styles}><button>Notes</button></NavLink>
+          <NavLink to="/notes" style={styles}><button>Notes</button></NavLink>
         </nav>
       </header>
       <Outlet />
