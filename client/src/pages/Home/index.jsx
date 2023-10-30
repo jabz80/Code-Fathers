@@ -3,7 +3,7 @@ import Calendar from "react-calendar"
 
 export default function HomePage() {
   return (
-    <div>
+    <div className='home'>
       <Calendar />
     </div>
   )
