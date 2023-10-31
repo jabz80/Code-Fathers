@@ -81,8 +81,9 @@ export default function NoteForm({ inputText, setInputText, context, setContext,
 
     }
 
-    return (
-        <form>
+
+    return(
+        <form className="notes-form">
             <div>
                 <input placeholder="Note Title" id="note-text" value={inputText} type="text" className="note-text" onChange={handleInput} />
             </div>

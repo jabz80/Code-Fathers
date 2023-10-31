@@ -81,9 +81,9 @@ export default function CalendarApp(){
 
     return(
         <>
-        <Calendar onChange={handleChange} value={date} />
+        <Calendar onChange={handleChange} value={date} className='calender'/>
         <p>Selected date is {date.toLocaleDateString()}</p>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='container'>
             <label htmlFor='userId'>User ID</label>
             <input type='text' onChange={handleUserIdInput} id='userId'required />
             <br></br>
