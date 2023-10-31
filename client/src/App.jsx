@@ -4,10 +4,8 @@ import { Header } from './components';
 import { Footer } from './components';
 import './App.css';
 
-
 import { HomePage, AboutPage, NotFoundPage, CalendarPage, NotesPage, AddNotePage, PomodoroPage, UpdateNotePage, LoginPage, RegisterPage } from './pages';
-
-import { TimerProvider } from './contexts';
+import { TimerProvider } from './contexts/PomodoroContext'
 
 import NotePage from './pages/NotePage';
 //Don't forget to change name of Provider

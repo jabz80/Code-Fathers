@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import pingSound from "../assets/pingSound.mp3"
+import pingSound from "../../assets/pingSound.mp3"
 
 const TimerContext = createContext();
 
@@ -71,7 +71,7 @@ export const TimerProvider = ({ children }) => {
         } else {
           setSeconds((prevState) => prevState - 1);
         }
-      }, 100);
+      }, 1000);
 
       return () => {
         clearInterval(interval);
