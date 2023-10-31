@@ -11,6 +11,7 @@ export default function CalendarApp(){
     const [userId, setUserId] = useState('')
     const [data, setData] = useState(null)
     const [editingEvent, setEditingEvent] = useState(null)
+    const [addToggle, setAddToggle] = useState(false)
     const [editToggle, setEditToggle] = useState(false)
 
     async function handleChange(e){
@@ -29,9 +30,13 @@ export default function CalendarApp(){
 
     }
 
+    function handleAddButtonClick(){
+        setAddToggle(!addToggle)
+    }
+
     function handleEditButtonClick(eventId){
         setEditingEvent(eventId)
-        setEditToggle(!toggle)
+        setEditToggle(!editToggle)
     }
 
     function handleUserIdInput(e){
@@ -83,6 +88,7 @@ export default function CalendarApp(){
             setTitle('')
             setDescription('')
             setUserId('')
+            setAddToggle(!addToggle)
         } else {
             setMessage('Please enter an event.');
             setTimeout(() => {
@@ -164,6 +170,8 @@ export default function CalendarApp(){
                 setTitle('')
                 setDescription('')
                 setUserId('')
+                setEditingEvent(null)
+                setEditToggle(!editToggle)
             } else {
                 setMessage('Please enter an event.');
                 setTimeout(() => {
@@ -182,7 +190,7 @@ export default function CalendarApp(){
                 <br></br>
                 <label htmlFor='eventEdit'>Edit event description here:</label>
                 <input type='text' onChange={handleDescriptionInput} value={editDescription} id='eventEdit'/>
-                <label htmlFor='dateEdit'>Edit event description here:</label>
+                <label htmlFor='dateEdit'>Edit event date here (yyyy-mm-dd):</label>
                 <input type='text' onChange={handleDateInput} value={editDate} id='dateEdit'/>
                 <br></br>
                 <button type="submit">Submit Edit</button>
@@ -195,7 +203,8 @@ export default function CalendarApp(){
         <>
         <Calendar onChange={handleChange} value={date} className='calender'/>
         <p>Selected date is {date.toLocaleDateString()}</p>
-        <form onSubmit={handleSubmit} className='container'>
+        <button onClick={() => handleAddButtonClick()}>Add Event</button>
+        {addToggle == true && <form onSubmit={handleSubmit} className='container'>
             <label htmlFor='userId'>User ID</label>
             <input type='text' onChange={handleUserIdInput} id='userId' value={userId} required />
             <br></br>
@@ -207,7 +216,7 @@ export default function CalendarApp(){
             <br></br>
             <input type='submit' value="Add Event" />
             <p className='message'>{message}</p>
-        </form>
+        </form>}
 
         <div>
             {Array.isArray(data) && data.map((item, index) => (
