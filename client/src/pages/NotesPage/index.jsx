@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Notes, NoteCard, NoteFilters } from '../../components';
 import { Link } from 'react-router-dom';
 export default function NotesPage() {
+
   const [notes, setNotes] = useState([]);
   const [textFilter, setTextFilter] = useState('');
 
