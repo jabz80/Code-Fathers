@@ -173,6 +173,14 @@ button {
   transform: scale(1.1);
 }
 
+.about-section {
+  width: 95vw;
+}
+
+.about-section h1 {
+  text-align: center;
+}
+
 .footer {
   position: fixed;
   bottom: 0;
