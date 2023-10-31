@@ -52,6 +52,25 @@ body {
   transform: scale(1.1); 
 }
 
+@media screen and (max-width: 800px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar h1 {
+    font-size: 30px;
+  }
+
+  .navbar li {
+    padding: 5px 0;
+  }
+
+  .navbar li button {
+    width: 100%;
+  }
+}
+
 .calender {
   text-align: center;
   width: 90vw;
