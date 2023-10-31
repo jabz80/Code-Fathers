@@ -1,33 +1,103 @@
-* {
-  box-sizing: border-box;
-}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300&display=swap');
+
 
 body {
-  margin: 0 auto;
-  line-height: 1.6;
+  font-family: 'Poppins', sans-serif;
   font-size: 24px;
-  color: #2B061E;
-  background:#D9BFC0;;
+  background: linear-gradient(to bottom right, #fdfcfb, #e2d1c3);
 }
 
-#root {
-  height: 100%;
+
+.navbar {
+  display: flex; 
+  justify-content: space-around;
+  margin-top: 10px;
+  margin-bottom: 50px;
+  background-color: #c6c3bb;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.399);
+  width: 95vw;
+  border-radius: 10px;
+}
+
+
+.navbar h1 {
+  font-size: 40px;
+  font-family:monospace;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.navbar ul {
   display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-  
-h1, h2, h3 {
-  line-height:1.2;
+  list-style: none;
 }
 
-nav > a {
-  margin-right: 0.5rem;
+.navbar li {
+  padding-left: 1rem;
+  margin: 5px;
 }
 
-header, footer, main {
-  padding: 1rem;
+.navbar li button {
+  text-decoration: none;
+  color: white;
+  font-size: 17px;
+  width: 150px;
+  background-color: rgb(93, 148, 121);
+  transition: transform 0.3s, background-color 0.3s; 
 }
+
+.navbar li button:hover {
+  color: #ffffff;
+  background-color: #3c7760; 
+  transform: scale(1.1); 
+}
+
+.calender {
+  text-align: center;
+  width: 90vw;
+  margin-bottom: 50px;
+}
+
+input[type=text], select, textarea {
+  width: 88vw; 
+  padding: 12px; 
+  border: 1px solid #ccc; 
+  border-radius: 10px; 
+  box-sizing: border-box; 
+  margin-top: 6px; 
+  margin-bottom: 16px;
+  resize: vertical 
+}
+
+
+input[type=submit] {
+  background-color: rgb(93 148 121);
+  width: 120px;
+  padding: 12px 20px;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s; 
+
+}
+
+
+input[type=submit]:hover {
+  background-color: #3c7760;
+  transform: scale(1.1); /* Reduce the size to 90% when hovering */
+
+}
+
+
+.container {
+  border-radius: 10px;
+  width: 88vw;
+  background-color: #d8ddd8;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.399);
+  padding: 20px;
+}
+
 
 main {
   display: flex;
@@ -38,13 +108,6 @@ main {
   flex: 1;
 }
 
-.snack-main {
-  justify-content: flex-start;
-}
-
-h1 {
-  font-size: 3rem;
-}
 
 input[type=text] {
   margin-left: 0.1rem;
@@ -80,52 +143,17 @@ button {
   flex-shrink: 0;
 }
 
-.icon {
-  color: #2B061E;
-  border: 1px solid #2B061E;
-  border-radius: 5px;
-  width: 2rem;
-  height: 2rem;
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  margin: 40px;
+  width: 95vw;
+  height: 100px;
+}
+
+.footer p {
+  color: rgba(0, 0, 0, 0.4);
   text-align: center;
-}
-
-p > span, p > button {
-  margin-right: 0.2rem;
-}
-
-.snack-filters {
-  margin-bottom: 2rem;
-}
-
-.close-title {
-  margin-bottom: 0.1rem;
-}
-
-form {
-  min-height: 20vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-form input,
-form button {
-padding: 0.5rem;
-font-size: 1.2rem;
-border: none;
-background: white;
-margin: 10px;
-}
-
-form button {
-  color: #875053;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-left: 5px;
-}
-
-form button:hover {
-  background: #2B061E;
-  color: white;
+  padding: 20px;
 }

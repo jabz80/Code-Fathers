@@ -45,7 +45,7 @@ class Task {
       [user_id, task_title, task_description, task_date, this.task_id]
     );
     if (response.rows.length != 1) {
-      throw new Error('Unable to update task');
+      throw new Error('Unable to update task.');
     }
     return new Task(response.rows[0]);
   }

@@ -48,7 +48,7 @@ class Note {
       [user_id, title, context, date, this.id]
     );
     if (response.rows.length != 1) {
-      throw new Error('Unable to update note');
+      throw new Error('Unable to update note.');
     }
     return new Note(response.rows[0]);
   }

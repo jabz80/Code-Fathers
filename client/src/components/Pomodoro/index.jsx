@@ -30,7 +30,7 @@ export default function Pomodoro() {
   const pathColour = displayMessage ? '#0f0' : '#007bff';
 
   return (
-    <>
+    <div className="pomodoro">
       <div>
         <h1>Pomodoro Timer</h1>
         {!displayMessage && <p>Time to Revise!</p>}
@@ -79,6 +79,6 @@ export default function Pomodoro() {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }
