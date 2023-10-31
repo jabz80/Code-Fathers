@@ -25,11 +25,3 @@ headers: {
 }
 }
 const response = await fetch("http://localhost:3000/INSERT-ROUTE", options);
-
-if (response.status == INSERT CORRECT STATUS CODE) {
-const data = await response.json();
-//Some code...
-} else {
-window.location.assign("./login");
-localStorage.clear()
-}
