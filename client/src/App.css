@@ -144,7 +144,7 @@ button {
 .update-note-link {
   position: absolute; 
   bottom: 5%; 
-  right: 15%; 
+  left: 5%; 
 }
 
 .add-note-btn  {

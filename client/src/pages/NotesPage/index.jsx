@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Notes, NoteCard, NoteFilters } from '../../components'
 import { Link } from 'react-router-dom';
 export default function NotesPage() {
-
+   
   const [notes, setNotes] = useState([]);
   const [textFilter, setTextFilter] = useState("")
 
@@ -18,7 +18,7 @@ export default function NotesPage() {
   }, [notes])
 
   function displayNotes() {
-
+    notes.reverse()
     return notes
       .filter(s => textFilter.length == 0 || s.title.toLowerCase().includes(textFilter.toLowerCase()))
       .map(s => <NoteCard key={s.id} id={s.id} user_id={s.user_id} title={s.title} context={s.context} created_at={s.created_at} updated_at={s.updated_at} />)
