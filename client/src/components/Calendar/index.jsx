@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Calendar from 'react-calendar';
+import index from '../../pages/CalendarPage';
 
 // export default function CalendarApp({date, setDate, title, setTitle, description, setDescription, message, setMessage }){
 export default function CalendarApp(){
@@ -84,6 +85,106 @@ export default function CalendarApp(){
         }
     }
 
+    async function handleDelete(id){
+        console.log(id);
+        const options = {
+            method: "DELETE",
+            headers: { 'Content-Type': 'application/json' }
+        }
+        const response = await fetch(`http://localhost:3000/tasks/${id}`, options);
+        if (response.status === 204) {
+            console.log("Success");
+        } else {
+            console.error('Delete failed');
+        }
+    }
+
+    function EditForm({ taskId, userId, title, description, date, onSubmit }) {
+        const [editInput, setEditInput] = useState('');
+        const [editUserId, setEditUserId] = useState(userId)
+        const [editTitle, setEditTitle] = useState(title)
+        const [editDescription, setEditDescription] = useState(description)
+        const [editDate, setEditDate] = useState(date)
+    
+        const handleUserIdInput = (e) => {
+            const newInput = e.target.value;
+            setEditUserId(newInput)
+        };
+
+        const handleTitleInput = (e) => {
+            const newInput = e.target.value;
+            setEditTitle(newInput)
+        };
+
+        const handleDescriptionInput = (e) => {
+            const newInput = e.target.value;
+            setEditDescription(newInput)
+        };
+
+        const handleDateInput = (e) => {
+            const newInput = e.target.value;
+            setEditDate(newInput)
+        };
+    
+        const handleEditSubmit = (e) => {
+            e.preventDefault();
+            if (title.length > 0 && description.length > 0) {
+                fetch(`http://localhost:3000/tasks/${taskId}`, {
+                    method: 'PATCH',
+                    body: JSON.stringify({
+                        user_id: editUserId,
+                        task_title: editTitle,
+                        task_description: editDescription,
+                        task_date: editDate
+                    }),
+                    headers: {
+                        'Content-type': 'application/json; charset=UTF-8',
+                    },
+                })
+                .then((res) => res.json())
+                .then((data) => {
+                    setMessage('Event added successfully.');
+                    setTimeout(() => {
+                        setMessage('')
+                    }, 5000)
+                })
+                .catch((err) => {
+                    console.log(err.message);
+                    setMessage('There was a problem in creating your event.');
+                    setTimeout(() => {
+                        setMessage('')
+                    }, 5000)
+                });
+                setTitle('')
+                setDescription('')
+                setUserId('')
+            } else {
+                setMessage('Please enter an event.');
+                setTimeout(() => {
+                    setMessage('')
+                }, 5000)
+            }
+        }
+    
+        return (
+            <form onSubmit={handleEditSubmit}>
+                <label htmlFor='userIdEdit'>User ID</label>
+                <input type='text' onChange={handleUserIdInput} id='userIdEdit' value={editUserId} required />
+                <br></br>
+                <label htmlFor='titleEdit'>Add event title here:</label>
+                <input type='text' onChange={handleTitleInput} id='titleEdit' value={editTitle} required />
+                <br></br>
+                <label htmlFor='eventEdit'>Add event description here:</label>
+                <input type='text' onChange={handleDescriptionInput} value={editDescription} id='eventEdit'/>
+                <label htmlFor='dateEdit'>Add event description here:</label>
+                <input type='text' onChange={handleDateInput} value={editDate} id='dateEdit'/>
+                <br></br>
+                <button type="submit">Submit Edit</button>
+            </form>
+        );
+    }
+
+
     return(
         <>
         <Calendar onChange={handleChange} value={date} className='calender'/>
@@ -107,6 +208,8 @@ export default function CalendarApp(){
             <div key={index}>
             <h1>{item.task_title}</h1>
             <p>{item.task_description}</p>
+            <button onClick={() => handleDelete(item.task_id)}>Delete Event</button>
+            <EditForm taskId={item.task_id} userId={item.user_id} title={item.task_title} description={item.task_description} date={item.task_date}/>
             </div>
             ))}
         </div>
