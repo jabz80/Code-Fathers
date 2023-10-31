@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, fireEvent, render, cleanup } from '@testing-library/react';
+import { screen, render, cleanup } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 
 import * as matchers from '@testing-library/jest-dom/matchers';

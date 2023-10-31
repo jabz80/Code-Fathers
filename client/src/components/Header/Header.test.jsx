@@ -1,6 +1,7 @@
 import React from "react";
-import { screen, fireEvent, render, cleanup } from "@testing-library/react";
+import { screen, render, cleanup } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
+import userEvent from "@testing-library/user-event";
 
 import * as matchers from "@testing-library/jest-dom/matchers";
 expect.extend(matchers);
@@ -37,7 +38,7 @@ describe("Header component", () => {
   it("renders the Home link", () => {
     const homeLink = screen.getByRole("link", { name: /home/i });
     expect(homeLink).toBeInTheDocument();
-    fireEvent.click(homeLink);
+    userEvent.click(homeLink);
     expect(window.location.href).toEqual("http://localhost:3000/");
   });
 });
