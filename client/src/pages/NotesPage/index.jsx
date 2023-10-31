@@ -18,7 +18,7 @@ export default function NotesPage() {
   }, [notes])
 
   function displayNotes() {
-    notes.reverse()
+notes.reverse()
     return notes
       .filter(s => textFilter.length == 0 || s.title.toLowerCase().includes(textFilter.toLowerCase()))
       .map(s => <NoteCard key={s.id} id={s.id} user_id={s.user_id} title={s.title} context={s.context} created_at={s.created_at} updated_at={s.updated_at} />)

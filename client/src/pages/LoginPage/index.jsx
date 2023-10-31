@@ -32,7 +32,7 @@ export default function LoginPage() {
 
     if (response.status == 200) {
       localStorage.setItem('token', data.token);
-      //window.location.assign('board.html');
+      window.location.assign('/');
     } else {
       alert(data.error);
     }

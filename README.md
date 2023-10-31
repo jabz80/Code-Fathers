@@ -17,3 +17,19 @@ SERVER SIDE:
 - The Database folder has the set up in place. ONLY thing MISSING is the sql for the database.
 
 AGAIN THIS A TEMPLATE AND YOU CAN CHANGE STUFF
+
+AUTH:
+const options = {
+headers: {
+'Authorization': localStorage.getItem("token")
+}
+}
+const response = await fetch("http://localhost:3000/INSERT-ROUTE", options);
+
+if (response.status == INSERT CORRECT STATUS CODE) {
+const data = await response.json();
+//Some code...
+} else {
+window.location.assign("./login");
+localStorage.clear()
+}
