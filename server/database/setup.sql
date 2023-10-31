@@ -76,7 +76,8 @@ VALUES
     ('user27', 'password27', 'Jennifer White'),
     ('user28', 'password28', 'William Martin'),
     ('user29', 'password29', 'Jessica Robinson'),
-    ('user30', 'password30', 'Richard Green');
+    ('user30', 'password30', 'Richard Green'),
+    ('user', '$2b$10$gFWE8CNP/t2mlonOC34aA.f7Gr5bi.ZG4tB6hlnRmuCCkyr9k7wIC', 'username is user');;
 
 -- Insert data into Notes table with 30 records
 INSERT INTO Notes (user_id, title, context, created_at, updated_at)
