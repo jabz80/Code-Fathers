@@ -9,9 +9,8 @@ export default function NoteForm({ inputText, setInputText, context, setContext,
 
     async function handleSubmit(e) {
         e.preventDefault()
-        console.log(inputText);
-        console.log(context);
-        console.log(type);
+
+
         if (inputText.length > 0 && context.length > 0) {
             if (type == "add") {
                 await fetch(`http://localhost:3000/notes/`, {
@@ -80,9 +79,13 @@ export default function NoteForm({ inputText, setInputText, context, setContext,
         }
 
     }
-
-
-    return(
+    let btnLabel = ""
+    if (type == "add") {
+        btnLabel = "Add a Note"
+    } else if (type == "update") {
+        btnLabel = "Update Note"
+    }
+    return (
         <form className="notes-form">
             <div>
                 <input placeholder="Note Title" id="note-text" value={inputText} type="text" className="note-text" onChange={handleInput} />
@@ -91,7 +94,7 @@ export default function NoteForm({ inputText, setInputText, context, setContext,
                 <input placeholder="Note context" id="note-context" value={context} type="text" className="note-context" onChange={handleContext} />
             </div>
 
-            <button type="submit" className="note-button" onClick={handleSubmit}>Add a Note</button>
+            <button type="submit" className="note-button" onClick={handleSubmit}>{btnLabel}</button>
             <p className='message'>{message}</p>
         </form>
     )
