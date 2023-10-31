@@ -1,5 +1,7 @@
 body {
     background-color: #f7f4ed;
+    display: flex;
+    justify-content: center;
 }
 
 .pomodoro {
