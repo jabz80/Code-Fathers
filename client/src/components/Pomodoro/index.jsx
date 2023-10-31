@@ -1,82 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React from 'react';
+import { useTimer } from '../../contexts';
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import pingSound from "../../assets/pingSound.mp3";
-import Slider from 'rc-slider';
-import 'rc-slider/assets/index.css';
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
 
 export default function Pomodoro() {
-  const breakTimeSound = new Audio(pingSound);
-  const [minutes, setMinutes] = useState(25);
-  const [seconds, setSeconds] = useState(0);
-  const [displayMessage, setDisplayMessage] = useState(false);
-  const [isRunning, setIsRunning] = useState(false);
-  const [revisionTime, setRevisionTime] = useState(25);
-  const [breakTime, setBreakTime] = useState(5);
+  const {
+    minutes,
+    seconds,
+    displayMessage,
+    isRunning,
+    revisionTime,
+    breakTime,
+    showSettings,
+    isActive,
+    toggleTimer,
+    toggleSettings,
+    handleRevisionChange,
+    handleBreakChange,
+    resetTimer,
+  } = useTimer();
 
   const timerMinutes = minutes < 10 ? `0${minutes}` : minutes;
   const timerSeconds = seconds < 10 ? `0${seconds}` : seconds;
 
-  const toggleTimer = () => {
-    setIsRunning(!isRunning);
-  };
-
-  const handleRevisionChange = (value) => {
-    setRevisionTime(value);
-    if (!isRunning) {
-      setMinutes(value);
-      setSeconds(0);
-    }
-  };
-
-  const handleBreakChange = (value) => {
-    setBreakTime(value);
-  };
-
-  const resetTimer = () => {
-    setMinutes(revisionTime);
-    setSeconds(0);
-    setIsRunning(false);
-    setDisplayMessage(false);
-  };
-
-  useEffect(() => {
-    if (isRunning) {
-      const interval = setInterval(() => {
-        clearInterval(interval);
-
-        if (seconds === 0) {
-          if (minutes !== 0) {
-            setSeconds(59);
-            setMinutes((prevState) => prevState - 1)
-          } else {
-            let minutes = displayMessage ? revisionTime : breakTime;
-            let seconds = 10;
-
-            setMinutes(minutes);
-            setSeconds(seconds);
-            setDisplayMessage(!displayMessage);
-
-            if (!displayMessage) {
-              breakTimeSound.play();
-            } else if (displayMessage) {
-                breakTimeSound.play()
-            }
-          }
-        } else {
-          setSeconds((prevState) => prevState - 1);
-        }
-      }, 1000);
-    }
-  }, [seconds, isRunning]);
-
-  const percentage = ((minutes * 60 + seconds) / (revisionTime  * 60)) * 100;
+  const totalSeconds = displayMessage ? breakTime * 60 : revisionTime * 60;
+  const percentage = ((minutes * 60 + seconds) / totalSeconds) * 100;
+  const pathColour = displayMessage ? '#0f0' : '#007bff';
 
   return (
     <>
       <div>
         <h1>Pomodoro Timer</h1>
-        {!displayMessage && <p>Time to Revise</p>}
+        {!displayMessage && <p>Time to Revise!</p>}
         {displayMessage && <p>Go on a break!</p>}
       </div>
       <div>
@@ -86,32 +43,41 @@ export default function Pomodoro() {
           styles={buildStyles({
             textSize: "16px",
             textColor: "#333",
-            pathColor: "#007bff",
+            pathColor: pathColour,
             trailColor: "#f3f3f3",
           })}
         />
       </div>
-      <button onClick={toggleTimer}>{isRunning ? "Pause" : "Start"}</button>
-      <button onClick={resetTimer}>Reset</button>
-      <div>
-        <h2>Revision Time: {revisionTime} minutes</h2>
-        <Slider
-          min={1}
-          max={60}
-          step={1}
-          value={revisionTime}
-          onChange={handleRevisionChange}
-        />
-      </div>
-      <div>
-        <h2>Break Time: {breakTime} minutes</h2>
-        <Slider
-          min={1}
-          max={30}
-          step={1}
-          value={breakTime}
-          onChange={handleBreakChange}
-        />
+      <div className="button-container">
+        <button onClick={toggleTimer}>{isActive ? "Pause" : "Start"}</button>
+        <button onClick={resetTimer}>Reset</button>
+        <button onClick={toggleSettings} disabled={isActive}>
+          Settings
+        </button>
+        {showSettings && (
+          <div className="slider-menu">
+            <div>
+              <h3>Revision Time: {revisionTime} minutes</h3>
+              <Slider
+                min={1}
+                max={60}
+                step={1}
+                value={revisionTime}
+                onChange={handleRevisionChange}
+              />
+            </div>
+            <div>
+              <h3>Break Time: {breakTime} minutes</h3>
+              <Slider
+                min={1}
+                max={30}
+                step={1}
+                value={breakTime}
+                onChange={handleBreakChange}
+              />
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

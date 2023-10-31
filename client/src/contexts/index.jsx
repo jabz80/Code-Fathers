@@ -1,24 +1,91 @@
-import React, { useState, useContext, createContext } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import pingSound from "../assets/pingSound.mp3"
 
-//step 1: creating  a context which allows us to share info between components
-const ExampleContext = createContext();
+const TimerContext = createContext();
 
-//step 2: cerate the provider in order to provide the context to the child components
-export const ExampleProvider = ({ children }) => {
-  //const [user, setUser] = useState();
-  const [exampleState, setExampleState] = useState();
+export const TimerProvider = ({ children }) => {
+  const breakTimeSound = new Audio(pingSound);
+  const [minutes, setMinutes] = useState(25);
+  const [seconds, setSeconds] = useState(0);
+  const [displayMessage, setDisplayMessage] = useState(false);
+  const [isRunning, setIsRunning] = useState(false);
+  const [revisionTime, setRevisionTime] = useState(25);
+  const [breakTime, setBreakTime] = useState(5);
+  const [showSettings, setShowSettings] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+
+  const toggleTimer = () => {
+    setIsRunning(!isRunning);
+    if (showSettings && !isRunning) {
+      toggleSettings();
+    }
+    setIsActive(!isActive);
+  };
+
+  const toggleSettings = () => {
+    setShowSettings(!showSettings);
+  };
+
+  const handleRevisionChange = (value) => {
+    setRevisionTime(value);
+    if (!isRunning) {
+      setMinutes(value);
+      setSeconds(0);
+    }
+  };
+
+  const handleBreakChange = (value) => {
+    setBreakTime(value);
+  };
+
+  const resetTimer = () => {
+    setMinutes(25);
+    setSeconds(0);
+    setIsRunning(false);
+    setDisplayMessage(false);
+    setIsActive(false);
+    setRevisionTime(25);
+    setBreakTime(5);
+  };
+
+  useEffect(() => {
+    if (isRunning) {
+      const interval = setInterval(() => {
+        if (seconds === 0) {
+          if (minutes !== 0) {
+            setMinutes((prevState) => prevState - 1);
+            setSeconds(59);
+          } else {
+            let newMinutes = displayMessage ? revisionTime : breakTime;
+            let newSeconds = 1;
+            setMinutes(newMinutes);
+            setSeconds(newSeconds);
+            setDisplayMessage(!displayMessage);
+
+            if (!displayMessage) {
+              breakTimeSound.play();
+            } else if (displayMessage) {
+              breakTimeSound.play();
+            }
+          }
+        } else {
+          setSeconds((prevState) => prevState - 1);
+        }
+      }, 100);
+
+      return () => {
+        clearInterval(interval);
+      };
+    }
+  }, [seconds, isRunning]);
 
   return (
-    <ExampleContext.Provider
-      value={{
-        exampleState,
-        setExampleState,
-      }}
-    >
+    <TimerContext.Provider value={{ minutes, seconds, displayMessage, isRunning, revisionTime, breakTime, showSettings, isActive, toggleTimer, toggleSettings, handleRevisionChange, handleBreakChange, resetTimer }}>
       {children}
-    </ExampleContext.Provider>
+    </TimerContext.Provider>
   );
 };
 
-//step 3: we have to create a way for components to consume the shared data
-export const useExample = () => useContext(ExampleContext);
+export const useTimer = () => {
+  return useContext(TimerContext);
+};
