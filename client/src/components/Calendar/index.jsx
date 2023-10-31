@@ -10,6 +10,8 @@ export default function CalendarApp(){
     const [message, setMessage] = useState('')
     const [userId, setUserId] = useState('')
     const [data, setData] = useState(null)
+    const [editingEvent, setEditingEvent] = useState(null)
+    const [editToggle, setEditToggle] = useState(false)
 
     async function handleChange(e){
         setData(null)
@@ -27,6 +29,10 @@ export default function CalendarApp(){
 
     }
 
+    function handleEditButtonClick(eventId){
+        setEditingEvent(eventId)
+        setEditToggle(!toggle)
+    }
 
     function handleUserIdInput(e){
         const newInput = e.target.value
@@ -48,7 +54,7 @@ export default function CalendarApp(){
         console.log(title, description)
         // Add event function using input value here
         if (title.length > 0 && description.length > 0) {
-            fetch('http://localhost:3000/tasks', {
+            fetch('http://localhost:3000/tasks/', {
                 method: 'POST',
                 body: JSON.stringify({
                     user_id: userId,
@@ -99,8 +105,7 @@ export default function CalendarApp(){
         }
     }
 
-    function EditForm({ taskId, userId, title, description, date, onSubmit }) {
-        const [editInput, setEditInput] = useState('');
+    function EditForm({ taskId, userId, title, description, date }) {
         const [editUserId, setEditUserId] = useState(userId)
         const [editTitle, setEditTitle] = useState(title)
         const [editDescription, setEditDescription] = useState(description)
@@ -125,6 +130,7 @@ export default function CalendarApp(){
             const newInput = e.target.value;
             setEditDate(newInput)
         };
+
     
         const handleEditSubmit = (e) => {
             e.preventDefault();
@@ -168,15 +174,15 @@ export default function CalendarApp(){
     
         return (
             <form onSubmit={handleEditSubmit}>
-                <label htmlFor='userIdEdit'>User ID</label>
+                <label htmlFor='userIdEdit'>Edit user ID</label>
                 <input type='text' onChange={handleUserIdInput} id='userIdEdit' value={editUserId} required />
                 <br></br>
-                <label htmlFor='titleEdit'>Add event title here:</label>
+                <label htmlFor='titleEdit'>Edit event title here:</label>
                 <input type='text' onChange={handleTitleInput} id='titleEdit' value={editTitle} required />
                 <br></br>
-                <label htmlFor='eventEdit'>Add event description here:</label>
+                <label htmlFor='eventEdit'>Edit event description here:</label>
                 <input type='text' onChange={handleDescriptionInput} value={editDescription} id='eventEdit'/>
-                <label htmlFor='dateEdit'>Add event description here:</label>
+                <label htmlFor='dateEdit'>Edit event description here:</label>
                 <input type='text' onChange={handleDateInput} value={editDate} id='dateEdit'/>
                 <br></br>
                 <button type="submit">Submit Edit</button>
@@ -209,7 +215,8 @@ export default function CalendarApp(){
             <h1>{item.task_title}</h1>
             <p>{item.task_description}</p>
             <button onClick={() => handleDelete(item.task_id)}>Delete Event</button>
-            <EditForm taskId={item.task_id} userId={item.user_id} title={item.task_title} description={item.task_description} date={item.task_date}/>
+            <button onClick={() => handleEditButtonClick(item.task_id)}>Edit Event</button>
+            {editingEvent === item.task_id && editToggle == true && <EditForm taskId={item.task_id} userId={item.user_id} title={item.task_title} description={item.task_description} date={item.task_date}/>}
             </div>
             ))}
         </div>
