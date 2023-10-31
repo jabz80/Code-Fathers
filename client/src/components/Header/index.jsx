@@ -9,7 +9,7 @@ export default function Header() {
       <header>
         <nav className='navbar'>
           <h1>Code Fathers</h1>
-          <ul>
+          <ul role="unorderedList">
             <li>
               <NavLink to="/" style={styles}><button>Home</button></NavLink>
             </li>
