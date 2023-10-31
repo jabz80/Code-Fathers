@@ -26,8 +26,8 @@ const NoteCard = ({ id, user_id, title, context, created_at, updated_at }) => {
             </h3>
             <p className="notes-details-holder">
             </p>
-            <Link to={`/notes/update/${id}`}>Update</Link>
-            <button onClick={handleDelete}>Delete</button>
+            <Link className='update-note-link' to={`/notes/update/${id}`}>Update</Link>
+            <button className='delete-note-btn' onClick={handleDelete}>Delete</button>
             <br />
         </div>
     );
