@@ -17,7 +17,7 @@ body {
   .pomodoro .CircularProgressbar-path {
     filter: drop-shadow(0 0 4px rgba(241, 224, 224, 0.5)); 
   }
-  
+
   .pomodoro h1 {
     font-size: 24px;
     margin: 0;
