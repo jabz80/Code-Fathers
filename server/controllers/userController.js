@@ -1,3 +1,4 @@
+require('dotenv').config();
 const bcrypt = require('bcrypt');
 
 const User = require('../models/User');
@@ -17,7 +18,7 @@ async function register(req, res) {
 
     res.status(201).send(result);
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    res.status(400).send({ error: err.message });
   }
 }
 
