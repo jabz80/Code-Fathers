@@ -3,6 +3,7 @@ const cors = require('cors');
 
 const noteRouter = require('./routers/note');
 const taskRouter = require('./routers/tasks');
+const userRouter = require('./routers/users');
 
 const app = express();
 
@@ -17,5 +18,6 @@ app.get('/', (req, res) => {
 // Routes
 app.use('/notes', noteRouter);
 app.use('/tasks', taskRouter);
+app.use('/users', userRouter);
 
 module.exports = app;

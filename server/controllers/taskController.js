@@ -19,17 +19,17 @@ async function show(req, res) {
   }
 }
 
-async function showByDate (req, res){
-  try{
-    let date = (req.params.date).toString()
-    const year = date.substr(4,4)
-    const month = date.substr(0,2)
-    const day = date.substr(2,2)
+async function showByDate(req, res) {
+  try {
+    let date = req.params.date.toString();
+    const year = date.substr(4, 4);
+    const month = date.substr(0, 2);
+    const day = date.substr(2, 2);
     console.log(date, year, month, day);
-    const tasks = await Task.getByDate(year, month, day)
-    res.status(200).json(tasks)
-  } catch (err){
-    res.status(500).json(err)
+    const tasks = await Task.getByDate(year, month, day);
+    res.status(200).json(tasks);
+  } catch (err) {
+    res.status(500).json(err);
   }
 }
 
@@ -63,9 +63,6 @@ async function destroy(req, res) {
   } catch (err) {
     res.status(404).json({ error: err.message });
   }
-
-  
-
 }
 
 module.exports = { index, show, create, update, destroy, showByDate };
