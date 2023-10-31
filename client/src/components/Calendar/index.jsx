@@ -20,7 +20,12 @@ export default function CalendarApp(){
         const response = await fetch(`http://localhost:3000/tasks/date/${date}`)
         const tasks = await response.json()
         setData(tasks)
+        setUserId("")
+        setTitle("")
+        setDescription("")
+
     }
+
 
     function handleUserIdInput(e){
         const newInput = e.target.value
@@ -85,13 +90,13 @@ export default function CalendarApp(){
         <p>Selected date is {date.toLocaleDateString()}</p>
         <form onSubmit={handleSubmit}>
             <label htmlFor='userId'>User ID</label>
-            <input type='text' onChange={handleUserIdInput} id='userId'required />
+            <input type='text' onChange={handleUserIdInput} id='userId' value={userId} required />
             <br></br>
             <label htmlFor='title'>Add event title here:</label>
-            <input type='text' onChange={handleTitleInput} id='title'required />
+            <input type='text' onChange={handleTitleInput} id='title' value={title} required />
             <br></br>
             <label htmlFor='event'>Add event description here:</label>
-            <input type='text' onChange={handleDescriptionInput} id='event'/>
+            <input type='text' onChange={handleDescriptionInput} value={description} id='event'/>
             <br></br>
             <input type='submit' value="Add Event" />
             <p className='message'>{message}</p>

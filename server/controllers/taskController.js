@@ -22,6 +22,9 @@ async function show(req, res) {
 async function showByDate (req, res){
   try{
     let date = (req.params.date).toString()
+    if (date.length === 7) {
+      date = date.substr(0, 2) + "0" + date.substr(2);
+    }
     const year = date.substr(4,4)
     const month = date.substr(0,2)
     const day = date.substr(2,2)
