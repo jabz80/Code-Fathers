@@ -1,6 +1,4 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300&display=swap');
-
 
 body {
   font-family: 'Poppins', sans-serif;
@@ -8,9 +6,8 @@ body {
   background: linear-gradient(to bottom right, #fdfcfb, #e2d1c3);
 }
 
-
 .navbar {
-  display: flex; 
+  display: flex;
   justify-content: space-around;
   margin-top: 10px;
   margin-bottom: 50px;
@@ -20,10 +17,9 @@ body {
   border-radius: 10px;
 }
 
-
 .navbar h1 {
   font-size: 40px;
-  font-family:monospace;
+  font-family: monospace;
   color: rgba(0, 0, 0, 0.4);
 }
 
@@ -43,13 +39,13 @@ body {
   font-size: 17px;
   width: 150px;
   background-color: rgb(93, 148, 121);
-  transition: transform 0.3s, background-color 0.3s; 
+  transition: transform 0.3s, background-color 0.3s;
 }
 
 .navbar li button:hover {
   color: #ffffff;
-  background-color: #3c7760; 
-  transform: scale(1.1); 
+  background-color: #3c7760;
+  transform: scale(1.1);
 }
 
 @media screen and (max-width: 800px) {
@@ -77,19 +73,20 @@ body {
   margin-bottom: 50px;
 }
 
-input[type=text], select, textarea {
-  width: 88vw; 
-  padding: 12px; 
-  border: 1px solid #ccc; 
-  border-radius: 10px; 
-  box-sizing: border-box; 
-  margin-top: 6px; 
+input[type='text'],
+select,
+textarea {
+  width: 88vw;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+  margin-top: 6px;
   margin-bottom: 16px;
-  resize: vertical 
+  resize: vertical;
 }
 
-
-input[type=submit] {
+input[type='submit'] {
   background-color: rgb(93 148 121);
   width: 120px;
   padding: 12px 20px;
@@ -97,17 +94,13 @@ input[type=submit] {
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.3s, background-color 0.3s; 
-
+  transition: transform 0.3s, background-color 0.3s;
 }
 
-
-input[type=submit]:hover {
+input[type='submit']:hover {
   background-color: #3c7760;
   transform: scale(1.1); /* Reduce the size to 90% when hovering */
-
 }
-
 
 .container {
   border-radius: 10px;
@@ -116,7 +109,6 @@ input[type=submit]:hover {
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.399);
   padding: 20px;
 }
-
 
 main {
   display: flex;
@@ -127,8 +119,7 @@ main {
   flex: 1;
 }
 
-
-input[type=text] {
+input[type='text'] {
   margin-left: 0.1rem;
 }
 
@@ -139,7 +130,7 @@ button {
 .note-holder {
   display: flex;
   flex-wrap: wrap;
-  max-width: 100%;
+  width: 100%;
   justify-content: center;
 }
 
@@ -155,11 +146,10 @@ button {
   border: 1px solid #444;
   border-radius: 20px;
   box-shadow: 5px 5px 5px #777;
-  width: 60%;
+  width: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex-shrink: 0;
   position: relative; 
 }
 
@@ -169,10 +159,10 @@ button {
   right: 5%; 
 }
 
-.update-note-link {
+.update-note-btn {
   position: absolute; 
   bottom: 5%; 
-  right: 15%; 
+  left: 5%; 
 }
 
 .add-note-btn  {
@@ -201,7 +191,6 @@ button {
 }
 
 .footer {
-  position: fixed;
   bottom: 0;
   left: 0;
   margin: 40px;
