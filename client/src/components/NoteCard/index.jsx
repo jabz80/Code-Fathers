@@ -14,21 +14,23 @@ const NoteCard = ({ id, user_id, title, context, created_at, updated_at }) => {
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
             },
-        })
+        });
     }
 
-
-
-
-
-    return <div className='note-card'>
-        <h3><Link to={`/notes/${id}`} style={linkStyle}>{title}</Link></h3>
-        <p className="notes-details-holder">
-
-        </p>
-        <button onClick={handleDelete}>Delete</button>
-        <br></br>
-    </div>
+    return (
+        <div className='note-card'>
+            <h3>
+                <Link to={`/notes/${id}`} style={linkStyle}>
+                    {title}
+                </Link>
+            </h3>
+            <p className="notes-details-holder">
+            </p>
+            <Link to={`/notes/update/${id}`}>Update</Link>
+            <button onClick={handleDelete}>Delete</button>
+            <br />
+        </div>
+    );
 };
 
 export default NoteCard;

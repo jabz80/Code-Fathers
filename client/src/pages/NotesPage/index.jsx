@@ -17,18 +17,18 @@ export default function NotesPage() {
     loadNotes();
   }, [notes])
 
-   function displayNotes() {
+  function displayNotes() {
 
-console.log(notes);
     return notes
-    .filter(s => textFilter.length == 0 || s.name.toLowerCase().includes(textFilter.toLowerCase()))
-    .map(s => <NoteCard key={s.id} id={s.id} user_id={s.user_id} title={s.title} context={s.context} created_at={s.created_at} updated_at={s.updated_at}  />)
+      .filter(s => textFilter.length == 0 || s.title.toLowerCase().includes(textFilter.toLowerCase()))
+      .map(s => <NoteCard key={s.id} id={s.id} user_id={s.user_id} title={s.title} context={s.context} created_at={s.created_at} updated_at={s.updated_at} />)
   }
 
   return (
     <main className="notes-main">
       <h1>Notes</h1>
       <Link to="/notes/new">Add a Note</Link>
+
       <NoteFilters textFilter={textFilter} setTextFilter={setTextFilter} />
       <div className="note-holder">
         {displayNotes()}
