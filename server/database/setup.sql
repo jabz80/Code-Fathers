@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS Notes;
 DROP TABLE IF EXISTS Tasks;
+DROP TABLE IF EXISTS token;
 DROP TABLE IF EXISTS Users;
 
 SET TIME ZONE 'Europe/London';
@@ -31,6 +32,14 @@ CREATE TABLE Tasks (
     task_description VARCHAR(10000),
     task_date DATE,
     PRIMARY KEY(task_id),
+    FOREIGN KEY (user_id) REFERENCES Users(user_id)
+);
+
+CREATE TABLE token (
+    token_id INT GENERATED ALWAYS AS IDENTITY,
+    user_id INT NOT NULL,
+    token CHAR(36) UNIQUE NOT NULL,
+    PRIMARY KEY (token_id),
     FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
 
