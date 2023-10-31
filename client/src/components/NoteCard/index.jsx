@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const linkStyle = {
     color: '#875053'
 };
 
 const NoteCard = ({ id, user_id, title, context, created_at, updated_at }) => {
+    const navigate = useNavigate(); // Get the navigate function
 
     async function handleDelete(e) {
         const response = await fetch(`http://localhost:3000/notes/${id}`, {
@@ -17,6 +18,11 @@ const NoteCard = ({ id, user_id, title, context, created_at, updated_at }) => {
         });
     }
 
+    function handleUpdate(e) {
+        // Use the navigate function to navigate to the "Update" page
+        navigate(`/notes/update/${id}`);
+    }
+
     return (
         <div className='note-card'>
             <h3>
@@ -26,7 +32,7 @@ const NoteCard = ({ id, user_id, title, context, created_at, updated_at }) => {
             </h3>
             <p className="notes-details-holder">
             </p>
-            <Link className='update-note-link' to={`/notes/update/${id}`}>Update</Link>
+            <button className='update-note-btn' onClick={handleUpdate}>Update</button>
             <button className='delete-note-btn' onClick={handleDelete}>Delete</button>
             <br />
         </div>

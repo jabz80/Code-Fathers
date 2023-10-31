@@ -111,7 +111,7 @@ button {
 .note-holder {
   display: flex;
   flex-wrap: wrap;
-  max-width: 100%;
+  width: 100%;
   justify-content: center;
 }
 
@@ -127,11 +127,10 @@ button {
   border: 1px solid #444;
   border-radius: 20px;
   box-shadow: 5px 5px 5px #777;
-  width: 60%;
+  width: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex-shrink: 0;
   position: relative; 
 }
 
@@ -141,10 +140,10 @@ button {
   right: 5%; 
 }
 
-.update-note-link {
+.update-note-btn {
   position: absolute; 
   bottom: 5%; 
-  right: 15%; 
+  left: 5%; 
 }
 
 .add-note-btn  {

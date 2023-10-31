@@ -22,10 +22,8 @@ export default function NoteForm({ inputText, setInputText, context, setContext,
                 })
                     .then((res) => res.json())
                     .then((data) => {
-                        setMessage('Note added successfully.');
-                        setTimeout(() => {
-                            setMessage('')
-                        }, 5000)
+                        //send them to the newly created note.
+                        window.location.href = `http://localhost:5173/notes/${data.id}`
                     })
                     .catch((err) => {
                         console.log(err.message);
@@ -54,10 +52,7 @@ export default function NoteForm({ inputText, setInputText, context, setContext,
                 })
                     .then((res) => res.json())
                     .then((data) => {
-                        setMessage('Note updated successfully.');
-                        setTimeout(() => {
-                            setMessage('')
-                        }, 5000)
+                        window.location.href = `http://localhost:5173/notes/${data.id}`
                     })
                     .catch((err) => {
                         console.log(err.message);
