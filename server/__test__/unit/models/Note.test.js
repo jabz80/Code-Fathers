@@ -106,7 +106,7 @@ describe('Task', () => {
 
       const note = await Note.getOneById(42);
       const deletedNote = await note.destroy();
-      expect(deletedNote).toBeInstanceOf(Note); // Check if it's an instance of the Skill class.
+      expect(deletedNote).toBeInstanceOf(Note);
       expect(deletedNote.context).toBe('This is the content of Note 3');
     });
   });
@@ -222,14 +222,14 @@ describe('Task', () => {
   describe('create', () => {
     //jest.mock("../../../database/connect");
     it('creates a new note and returns it', async () => {
-      // Create a mock data object for the new Skill.
+      // Create a mock data object
       const newNoteData = {
         user_id: '5',
         title: 'update test',
         context: 'This has been updated',
       };
 
-      // Mock the database query to resolve with the newly created Skill.
+      // Mock the database query
       jest.spyOn(db, 'query').mockResolvedValueOnce({
         rows: [
           {
@@ -243,9 +243,8 @@ describe('Task', () => {
       const createdNote = await Note.create(newNoteData);
 
       // Expectations:
-      expect(createdNote).toBeInstanceOf(Note); // Check if it's an instance of the Skill class.
-      expect(createdNote.context).toBe('This has been updated'); // Check the skill_id property.
-      // You can add more expectations to validate other properties if needed.
+      expect(createdNote).toBeInstanceOf(Note);
+      expect(createdNote.context).toBe('This has been updated');
     });
   });
 });
