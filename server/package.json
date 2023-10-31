@@ -8,7 +8,8 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "setup-db": "node ./database/setup.js",
-    "integrationTests": "jest -testPathPattern=/integration/"
+    "integrationTests": "jest -testPathPattern=/integration/",
+    "test:coverage": "jest --coverage"
   },
   "author": "",
   "license": "ISC",
