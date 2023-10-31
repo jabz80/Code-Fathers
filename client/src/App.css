@@ -143,6 +143,23 @@ button {
   flex-shrink: 0;
 }
 
+.add-note-btn  {
+  text-decoration: none;
+  padding: 12px;
+ text-align: center;
+  border-radius: 10px;
+  color: white;
+  font-size: 17px;
+  width: 150px;
+  background-color: rgb(93, 148, 121);
+  transition: transform 0.3s, background-color 0.3s; 
+}
+
+.add-note-btn:hover  {
+  background-color: #3c7760;
+  transform: scale(1.1);
+}
+
 .footer {
   position: fixed;
   bottom: 0;

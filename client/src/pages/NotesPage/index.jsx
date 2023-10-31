@@ -27,7 +27,7 @@ export default function NotesPage() {
   return (
     <main className="notes-main">
       <h1>Notes</h1>
-      <Link to="/notes/new">Add a Note</Link>
+      <Link className="add-note-btn" to="/notes/new">Add a Note</Link>
       <NoteFilters textFilter={textFilter} setTextFilter={setTextFilter} />
       <div className="note-holder">
         {displayNotes()}
