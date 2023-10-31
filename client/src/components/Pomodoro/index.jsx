@@ -30,7 +30,7 @@ export default function Pomodoro() {
   const pathColour = displayMessage ? '#0f0' : '#007bff';
 
   return (
-    <div className="pomodoro">
+    <div>
       <div>
         <h1>Pomodoro Timer</h1>
         {!displayMessage && <p>Time to Revise!</p>}
@@ -48,14 +48,14 @@ export default function Pomodoro() {
           })}
         />
       </div>
-      <div className="button-container">
+      <div>
         <button onClick={toggleTimer}>{isActive ? "Pause" : "Start"}</button>
         <button onClick={resetTimer}>Reset</button>
         <button onClick={toggleSettings} disabled={isActive}>
           Settings
         </button>
         {showSettings && (
-          <div className="slider-menu">
+          <div>
             <div>
               <h3>Revision Time: {revisionTime} minutes</h3>
               <Slider
