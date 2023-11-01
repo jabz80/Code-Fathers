@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function RegisterPage() {
   const [formUsername, setFormUsername] = useState('');
   const [formPassword, setFormPassword] = useState('');
   const [formName, setFormName] = useState('');
+
+  const navigate = useNavigate();
 
   function handleInput(e) {
     setFormUsername(e.target.value);
@@ -38,7 +41,8 @@ export default function RegisterPage() {
     const data = await response.json();
 
     if (response.status == 201) {
-      window.location.assign('/login');
+      //window.location.assign('/login');
+      navigate('/login');
     } else {
       alert(data.error);
     }
@@ -46,9 +50,9 @@ export default function RegisterPage() {
 
   return (
     <div>
-      <h1 className='register-header'>REGISTER</h1>
-      <form className='register-form' onSubmit={handleSubmit}>
-        <label className='register-name'>
+      <h1 className="register-header">REGISTER</h1>
+      <form className="register-form" onSubmit={handleSubmit}>
+        <label className="register-name">
           Full Name:
           <input
             type="text"
@@ -56,7 +60,7 @@ export default function RegisterPage() {
             onChange={handleName}
           />
         </label>
-        <label className='register-username'>
+        <label className="register-username">
           Username:
           <input
             type="text"
@@ -64,7 +68,7 @@ export default function RegisterPage() {
             onChange={handleInput}
           />
         </label>
-        <label className='register-password'>
+        <label className="register-password">
           Password:
           <input
             type="password"
