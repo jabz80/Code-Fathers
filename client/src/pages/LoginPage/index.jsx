@@ -14,13 +14,12 @@ export default function LoginPage() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(formUsername);
-    console.log(formPassword);
     const options = {
       method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
+
       },
       body: JSON.stringify({
         username: formUsername,
@@ -39,10 +38,10 @@ export default function LoginPage() {
   }
 
   return (
-    <div>
-      <h1>LOGIN</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
+    <div className='login'>
+      <h1 className='login-header'>LOGIN</h1>
+      <form className='login-form' onSubmit={handleSubmit}>
+        <label className='login-username'>
           Username:
           <input
             type="text"
@@ -50,7 +49,7 @@ export default function LoginPage() {
             onChange={handleInput}
           />
         </label>
-        <label>
+        <label className='login-password'>
           Password:
           <input
             type="password"

@@ -29,7 +29,6 @@ async function showByDate(req, res) {
     const month = date.substr(0, 2);
     const day = date.substr(2, 2);
 
-    console.log(date, year, month, day);
     const tasks = await Task.getByDate(year, month, day);
     console.log(tasks);
     res.status(200).json(tasks);

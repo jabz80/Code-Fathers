@@ -99,7 +99,8 @@ input[type='submit'] {
 
 input[type='submit']:hover {
   background-color: #3c7760;
-  transform: scale(1.1); /* Reduce the size to 90% when hovering */
+  transform: scale(1.1);
+  /* Reduce the size to 90% when hovering */
 }
 
 .container {
@@ -150,34 +151,37 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative; 
+  position: relative;
 }
 
 .delete-note-btn {
-  position: absolute; 
-  bottom: 5%; 
-  right: 5%; 
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  background-color: rgb(93, 148, 121);
 }
 
 .update-note-btn {
-  position: absolute; 
-  bottom: 5%; 
-  left: 5%; 
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  background-color: rgb(93, 148, 121);
 }
 
-.add-note-btn  {
+.add-note-btn {
   text-decoration: none;
   padding: 12px;
- text-align: center;
+  text-align: center;
   border-radius: 10px;
   color: white;
   font-size: 17px;
   width: 150px;
   background-color: rgb(93, 148, 121);
-  transition: transform 0.3s, background-color 0.3s; 
+  transition: transform 0.3s, background-color 0.3s;
+
 }
 
-.add-note-btn:hover  {
+.add-note-btn:hover {
   background-color: #3c7760;
   transform: scale(1.1);
 }
@@ -205,5 +209,126 @@ button {
 }
 
 .sliderText {
+  color: white;
+}
+
+
+.login-header {
+  display: flex;
+  justify-content: center;
+}
+
+.login-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.login-username input {
+  width: 400px;
+  margin: 10px;
+}
+
+.login-password input {
+  width: 300px;
+  margin: 10px;
+  margin-bottom: 50px;
+}
+
+
+.register-header {
+  display: flex;
+  justify-content: center;
+}
+
+.register-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.register-name input {
+  width: 400px;
+  margin: 10px;
+}
+
+.register-username input {
+  width: 400px;
+  margin: 10px;
+}
+
+.register-password input {
+  width: 300px;
+  margin: 10px;
+  margin-bottom: 50px;
+}
+
+button {
+  background-color: #3c7760 !important;
+  color: white;
+}
+
+
+
+.login-header {
+  display: flex;
+  justify-content: center;
+}
+
+.login-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.login-username input {
+  width: 400px;
+  margin: 10px;
+}
+
+.login-password input {
+  width: 300px;
+  margin: 10px;
+  margin-bottom: 50px;
+}
+
+
+.register-header {
+  display: flex;
+  justify-content: center;
+}
+
+.register-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.register-name input {
+  width: 400px;
+  margin: 10px;
+}
+
+.register-username input {
+  width: 400px;
+  margin: 10px;
+}
+
+.register-password input {
+  width: 300px;
+  margin: 10px;
+  margin-bottom: 50px;
+}
+
+button {
+  background-color: #3c7760 !important;
   color: white;
 }
