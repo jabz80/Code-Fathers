@@ -1,8 +1,6 @@
-
 import React, {useEffect, useState} from 'react';
 import Calendar from 'react-calendar';
 import index from '../../pages/CalendarPage';
-import { useNavigate } from 'react-router-dom';
 
 // export default function CalendarApp({date, setDate, title, setTitle, description, setDescription, message, setMessage }){
 export default function CalendarApp(){
@@ -85,46 +83,37 @@ export default function CalendarApp(){
         const dateToUse = e
         const formattedDate = dateToUse.toLocaleDateString().replaceAll("/", "")
         fetchData(formattedDate)
-
     }
 
-    const tasks = await response.json();
-    setData(tasks);
-    setUserId('');
-    setTitle('');
-    setDescription('');
-  }
+    function handleAddButtonClick(){
+        setAddToggle(!addToggle)
+    }
 
-  function handleAddButtonClick() {
-    setAddToggle(!addToggle);
-  }
-
-
-    function handleEditButtonClick(eventId) {
+    function handleEditButtonClick(eventId){
         setEditingEvent(eventId)
         setEditToggle(!editToggle)
     }
 
-    function handleUserIdInput(e) {
+    function handleUserIdInput(e){
         const newInput = e.target.value
         setUserId(newInput)
     }
 
-    function handleTitleInput(e) {
+    function handleTitleInput(e){
         const newInput = e.target.value
         setTitle(newInput)
     }
 
-    function handleDescriptionInput(e) {
+    function handleDescriptionInput(e){
         const newInput = e.target.value
         setDescription(newInput)
     }
 
-    function handleSubmit(e) {
+    function handleSubmit(e){
         e.preventDefault()
+        console.log(title, description)
         // Add event function using input value here
         if ( userId.length > 0 && title.length > 0 && description.length > 0) {
-
             fetch('http://localhost:3000/tasks/', {
                 method: 'POST',
                 body: JSON.stringify({
@@ -135,23 +124,22 @@ export default function CalendarApp(){
                 }),
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8',
-                    "Authorization": localStorage.getItem("token")
                 },
             })
-                .then((res) => res.json())
-                .then((data) => {
-                    setMessage('Event added successfully.');
-                    setTimeout(() => {
-                        setMessage('')
-                    }, 5000)
-                })
-                .catch((err) => {
-                    console.log(err.message);
-                    setMessage('There was a problem in creating your event.');
-                    setTimeout(() => {
-                        setMessage('')
-                    }, 5000)
-                });
+            .then((res) => res.json())
+            .then((data) => {
+                setMessage('Event added successfully.');
+                setTimeout(() => {
+                    setMessage('')
+                }, 5000)
+            })
+            .catch((err) => {
+                console.log(err.message);
+                setMessage('There was a problem in creating your event.');
+                setTimeout(() => {
+                    setMessage('')
+                }, 5000)
+            });
             setTitle('')
             setDescription('')
             setUserId('')
@@ -165,13 +153,11 @@ export default function CalendarApp(){
         }
     }
 
-    async function handleDelete(id) {
+    async function handleDelete(id){
+        console.log(id);
         const options = {
             method: "DELETE",
-            headers: {
-                'Content-Type': 'application/json',
-                "Authorization": localStorage.getItem("token")
-            }
+            headers: { 'Content-Type': 'application/json' }
         }
         const response = await fetch(`http://localhost:3000/tasks/${id}`, options);
         if (response.status === 204) {
@@ -237,11 +223,13 @@ export default function CalendarApp(){
         const [editDescription, setEditDescription] = useState(description)
         const [editDate, setEditDate] = useState(formatDate(date))  
 
+
         const handleUserIdInput = (e) => {
             const newInput = e.target.value;
             console.log(newInput);
             setEditUserId(newInput)
         };
+
 
         const handleTitleInput = (e) => {
             const newInput = e.target.value;
@@ -255,14 +243,13 @@ export default function CalendarApp(){
             setEditDescription(newInput)
         };
 
-
         const handleDateInput = (e) => {
             const newInput = e.target.value;
             console.log(newInput);
             setEditDate(newInput)
         };
 
-
+    
         const handleEditSubmit = (e) => {
             e.preventDefault();
             if (editUserId.length > 0 && editTitle.length > 0 && editDescription.length > 0 && editDate.length == 10) {
@@ -276,7 +263,6 @@ export default function CalendarApp(){
                     }),
                     headers: {
                         'Content-type': 'application/json; charset=UTF-8',
-                        "Authorization": localStorage.getItem("token")
                     },
                 })
                 .then((res) => res.json())
@@ -295,7 +281,6 @@ export default function CalendarApp(){
                         setMessage('')
                     }, 5000)
                 });
-
                 setTitle('')
                 setDescription('')
                 setUserId('')
@@ -308,7 +293,7 @@ export default function CalendarApp(){
                 }, 5000)
             }
         }
-
+    
         return (
             <form onSubmit={handleEditSubmit}>
                 <label htmlFor='userIdEdit'>Edit user ID</label>
@@ -318,9 +303,9 @@ export default function CalendarApp(){
                 <input type='text' onChange={handleTitleInput} id='titleEdit' value={editTitle}  />
                 <br></br>
                 <label htmlFor='eventEdit'>Edit event description here:</label>
-                <input type='text' onChange={handleDescriptionInput} value={editDescription} id='eventEdit' />
+                <input type='text' onChange={handleDescriptionInput} value={editDescription} id='eventEdit'/>
                 <label htmlFor='dateEdit'>Edit event date here (yyyy-mm-dd):</label>
-                <input type='text' onChange={handleDateInput} value={editDate} id='dateEdit' />
+                <input type='text' onChange={handleDateInput} value={editDate} id='dateEdit'/>
                 <br></br>
                 <button type="submit">Submit Edit</button>
             </form>
@@ -328,5 +313,6 @@ export default function CalendarApp(){
     }
 
     return displayEvents() 
+
 
 }
