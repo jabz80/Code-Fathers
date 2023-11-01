@@ -19,6 +19,16 @@ async function show(req, res) {
   }
 }
 
+async function showAllForUser(req, res) {
+  try {
+    const data = req.body;
+    const note = await Note.getAllByUser(data);
+    res.status(200).json(note);
+  } catch (err) {
+    res.status(404).json({ error: err.message });
+  }
+}
+
 const create = async (req, res) => {
   try {
     const data = req.body;
@@ -57,4 +67,4 @@ async function destroy(req, res) {
   }
 }
 
-module.exports = { index, show, create, update, destroy };
+module.exports = { index, show, showAllForUser, create, update, destroy };

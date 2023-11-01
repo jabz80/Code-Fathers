@@ -18,6 +18,17 @@ class Note {
     return response.rows.map((g) => new Note(g));
   }
 
+  static async getAllByUser({ user_id }) {
+    const response = await db.query(
+      'SELECT * from Notes WHERE user_id = $1 ;',
+      [user_id]
+    );
+    if (response.rows.length === 0) {
+      throw new Error('No notes available.');
+    }
+    return response.rows.map((g) => new Note(g));
+  }
+
   static async getOneById(id) {
     const response = await db.query('SELECT * FROM Notes WHERE note_id = $1;', [
       id,

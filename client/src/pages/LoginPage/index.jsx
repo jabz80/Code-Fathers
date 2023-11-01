@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Navigate, useNavigate, Link } from 'react-router-dom';
+
+import { useNavigate } from 'react-router-dom';
+
 import { useTimer } from '../../contexts/PomodoroContext';
 
 export default function LoginPage() {
-  const { isLoggedIn, setIsLoggedIn } = useTimer();
+  const { isLoggedIn, setIsLoggedIn, userID, setUserID } = useTimer();
   const [formUsername, setFormUsername] = useState('');
   const [formPassword, setFormPassword] = useState('');
 
@@ -37,6 +39,20 @@ export default function LoginPage() {
       setIsLoggedIn(true);
       localStorage.setItem('token', data.token);
       // window.location.assign('/');
+      const option = {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          token: data.token,
+        }),
+      };
+      const res = await fetch('http://localhost:3000/users/showId', option);
+      const resData = await res.json();
+      setUserID(resData);
+      console.log(userID);
       navigate('/');
     } else {
       alert(data.error);
@@ -47,6 +63,7 @@ export default function LoginPage() {
   useEffect(() => {
     setIsLoggedIn(false);
     localStorage.clear();
+    setUserID(0);
   }, []);
 
   return (
