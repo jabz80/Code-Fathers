@@ -74,7 +74,7 @@ export default function NoteForm({
         })
           .then((res) => res.json())
           .then((data) => {
-            window.location.href = `http://localhost:5173/notes/${data.id}`;
+            navigate(`/notes/${data.id}`);
           })
           .catch((err) => {
             console.log(err.message);
