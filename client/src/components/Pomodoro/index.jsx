@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTimer } from '../../contexts';
+import { useTimer } from '../../contexts/PomodoroContext';
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import Slider from "rc-slider";
@@ -33,8 +33,8 @@ export default function Pomodoro() {
     <div className='pomodoro'>
       <div>
         <h1>Pomodoro Timer</h1>
-        {!displayMessage && <p>Time to Revise!</p>}
-        {displayMessage && <p>Go on a break!</p>}
+        {!displayMessage && <p role="revision">Time to Revise!</p>}
+        {displayMessage && <p role="break">Go on a break!</p>}
       </div>
       <div>
         <CircularProgressbar
@@ -42,22 +42,20 @@ export default function Pomodoro() {
           text={`${timerMinutes}:${timerSeconds}`}
           styles={buildStyles({
             textSize: "16px",
-            textColor: "#333",
+            textColor: "#ffffff",
             pathColor: pathColour,
             trailColor: "#f3f3f3",
           })}
         />
       </div>
-      <div>
-        <button onClick={toggleTimer}>{isActive ? "Pause" : "Start"}</button>
-        <button onClick={resetTimer}>Reset</button>
-        <button onClick={toggleSettings} disabled={isActive}>
-          Settings
-        </button>
+      <div className='button'>
+        <button role="startButton" onClick={toggleTimer}>{isActive ? "Pause" : "Start"}</button>
+        <button role="resetButton" onClick={resetTimer}>Reset</button>
+        <button role="settingsButton" onClick={toggleSettings} disabled={isActive}>Settings</button>
         {showSettings && (
           <div>
             <div>
-              <h3>Revision Time: {revisionTime} minutes</h3>
+              <h3 className="sliderText" role="revisionTime">Revision Time: {revisionTime} minutes</h3>
               <Slider
                 min={1}
                 max={60}
@@ -67,7 +65,7 @@ export default function Pomodoro() {
               />
             </div>
             <div>
-              <h3>Break Time: {breakTime} minutes</h3>
+              <h3 className="sliderText" role="breakTime">Break Time: {breakTime} minutes</h3>
               <Slider
                 min={1}
                 max={30}

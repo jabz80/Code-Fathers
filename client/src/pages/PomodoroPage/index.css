@@ -16,7 +16,6 @@ body {
     text-align: center;
   }
 
-
   .pomodoro h1 {
     font-size: 24px;
     margin: 0;
@@ -30,13 +29,20 @@ body {
   
   .pomodoro button {
     background-color: #007bff;
-    color: #fff;
+    /* color: #fff; */
     border: none;
     border-radius: 4px;
     padding: 10px 20px;
     font-size: 16px;
     margin: 20px;
     cursor: pointer;
+    width: 100px;
+  }
+
+  .pomodoro button[disabled] {
+    background-color: #ccc; /* New background color when disabled */
+    opacity: 0.7; /* Reduce opacity to make it look faded when disabled */
+    /* cursor: not-allowed; Change cursor to not-allowed when disabled */
   }
   
   .pomodoro button:hover {
@@ -48,10 +54,12 @@ body {
     margin-top: 10px;
   }
   
-  .pomodoro h2 {
+  .pomodoro h3 {
     font-size: 18px;
     margin: 10px 0;
     color: white;
   }
-  
-  
+
+  .sliderText {
+    color: white;
+  }

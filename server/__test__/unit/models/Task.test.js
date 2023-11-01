@@ -39,7 +39,7 @@ describe('Task', () => {
       //not static so need an instance
       const task = await Task.getOneById(42);
       const updatedTask = await task.update(newTaskData);
-      expect(updatedTask).toBeInstanceOf(Task); // Check if it's an instance of the Skill class.
+      expect(updatedTask).toBeInstanceOf(Task);
       expect(updatedTask.task_title).toBe('project');
     });
 
@@ -107,7 +107,7 @@ describe('Task', () => {
 
       const task = await Task.getOneById(42);
       const deletedTask = await task.destroy();
-      expect(deletedTask).toBeInstanceOf(Task); // Check if it's an instance of the Skill class.
+      expect(deletedTask).toBeInstanceOf(Task);
       expect(deletedTask.task_title).toBe('Task 6');
     });
   });
@@ -247,8 +247,8 @@ describe('Task', () => {
       const createdTask = await Task.create(newTaskData);
 
       // Expectations:
-      expect(createdTask).toBeInstanceOf(Task); // Check if it's an instance of the Skill class.
-      expect(createdTask.task_id).toBe(33); // Check the skill_id property.
+      expect(createdTask).toBeInstanceOf(Task);
+      expect(createdTask.task_id).toBe(33);
       // You can add more expectations to validate other properties if needed.
     });
   });
