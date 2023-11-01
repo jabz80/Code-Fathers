@@ -2,37 +2,6 @@ import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import index from '../../pages/CalendarPage';
 
-// export default function CalendarApp({date, setDate, title, setTitle, description, setDescription, message, setMessage }){
-export default function CalendarApp() {
-    const [date, setDate] = useState(new Date())
-    const [title, setTitle] = useState('')
-    const [description, setDescription] = useState('')
-    const [message, setMessage] = useState('')
-    const [userId, setUserId] = useState('')
-    const [data, setData] = useState(null)
-    const [editingEvent, setEditingEvent] = useState(null)
-    const [addToggle, setAddToggle] = useState(false)
-    const [editToggle, setEditToggle] = useState(false)
-
-    async function handleChange(e) {
-        setData(null)
-        setDate(e)
-        let date = e.toLocaleDateString()
-        date = date.replaceAll("/", "")
-        date = parseInt(date)
-        const options = {
-            headers: {
-                "Authorization": localStorage.getItem("token")
-            }
-        }
-        const response = await fetch(`http://localhost:3000/tasks/date/${date}`, options)
-        const tasks = await response.json()
-        setData(tasks)
-        setUserId("")
-        setTitle("")
-        setDescription("")
-
-    }
 export default function CalendarApp() {
   const [date, setDate] = useState(new Date());
   const [title, setTitle] = useState('');
@@ -51,7 +20,7 @@ export default function CalendarApp() {
     date = date.replaceAll('/', '');
     date = parseInt(date);
     console.log(date);
-    //response keeps failing. Problem with backend?
+    //response keeps failing. Problem with the backend?
     const options = {
       headers: {
         Authorization: localStorage.getItem('token'),
@@ -68,9 +37,10 @@ export default function CalendarApp() {
     setDescription('');
   }
 
-    function handleAddButtonClick() {
-        setAddToggle(!addToggle)
-    }
+  function handleAddButtonClick() {
+    setAddToggle(!addToggle);
+  }
+
 
     function handleEditButtonClick(eventId) {
         setEditingEvent(eventId)
