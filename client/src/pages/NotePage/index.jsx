@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const NotePage = () => {
-    const navigate = useNavigate()
-    const [loading, setLoading] = useState(false);
-    const [note, setNote] = useState({});
-
+  const navigate = useNavigate()
+  const [loading, setLoading] = useState(false);
+  const [note, setNote] = useState({});
 
     useEffect(() => {
 
