@@ -156,6 +156,19 @@ textarea {
   resize: vertical;
 }
 
+input[type='password'],
+select,
+textarea {
+  width: 88vw;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
 input[type='submit'] {
   background-color: rgb(93 148 121);
   width: 120px;
@@ -307,7 +320,6 @@ button {
   margin-bottom: 50px;
 }
 
-
 .register-header {
   display: flex;
   justify-content: center;
@@ -342,8 +354,6 @@ button {
   color: white;
 }
 
-
-
 .login-header {
   display: flex;
   justify-content: center;
@@ -363,8 +373,8 @@ button {
 }
 
 .login-password input {
-  width: 300px;
-  margin: 10px;
+  width: 400px;
+  height: 40px;
   margin-bottom: 50px;
 }
 
