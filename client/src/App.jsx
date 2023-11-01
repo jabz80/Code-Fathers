@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Header, Protected, Footer } from './components';
-//import { Footer } from './components';
 import './App.css';
 
 import {
@@ -14,8 +12,9 @@ import {
   PomodoroPage,
   UpdateNotePage,
   LoginPage,
-  RegisterPage,
+  RegisterPage
 } from './pages';
+
 import { TimerProvider } from './contexts/PomodoroContext';
 
 import NotePage from './pages/NotePage';
@@ -30,9 +29,7 @@ function App() {
           <Route
             path="/about"
             element={
-              <Protected>
                 <AboutPage />
-              </Protected>
             }
           />
           <Route
@@ -80,9 +77,7 @@ function App() {
           <Route
             path="/timer"
             element={
-              <Protected>
                 <PomodoroPage />
-              </Protected>
             }
           />
 
