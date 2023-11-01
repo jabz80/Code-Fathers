@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import index from '../../pages/CalendarPage';
 
 // export default function CalendarApp({date, setDate, title, setTitle, description, setDescription, message, setMessage }){
-export default function CalendarApp(){
+export default function CalendarApp() {
     const [date, setDate] = useState(new Date())
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
@@ -14,14 +14,18 @@ export default function CalendarApp(){
     const [addToggle, setAddToggle] = useState(false)
     const [editToggle, setEditToggle] = useState(false)
 
-    async function handleChange(e){
+    async function handleChange(e) {
         setData(null)
         setDate(e)
         let date = e.toLocaleDateString()
         date = date.replaceAll("/", "")
         date = parseInt(date)
-        console.log(date)
-        const response = await fetch(`http://localhost:3000/tasks/date/${date}`)
+        const options = {
+            headers: {
+                "Authorization": localStorage.getItem("token")
+            }
+        }
+        const response = await fetch(`http://localhost:3000/tasks/date/${date}`, options)
         const tasks = await response.json()
         setData(tasks)
         setUserId("")
@@ -30,33 +34,32 @@ export default function CalendarApp(){
 
     }
 
-    function handleAddButtonClick(){
+    function handleAddButtonClick() {
         setAddToggle(!addToggle)
     }
 
-    function handleEditButtonClick(eventId){
+    function handleEditButtonClick(eventId) {
         setEditingEvent(eventId)
         setEditToggle(!editToggle)
     }
 
-    function handleUserIdInput(e){
+    function handleUserIdInput(e) {
         const newInput = e.target.value
         setUserId(newInput)
     }
 
-    function handleTitleInput(e){
+    function handleTitleInput(e) {
         const newInput = e.target.value
         setTitle(newInput)
     }
 
-    function handleDescriptionInput(e){
+    function handleDescriptionInput(e) {
         const newInput = e.target.value
         setDescription(newInput)
     }
 
-    function handleSubmit(e){
+    function handleSubmit(e) {
         e.preventDefault()
-        console.log(title, description)
         // Add event function using input value here
         if (title.length > 0 && description.length > 0) {
             fetch('http://localhost:3000/tasks/', {
@@ -69,22 +72,23 @@ export default function CalendarApp(){
                 }),
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8',
+                    "Authorization": localStorage.getItem("token")
                 },
             })
-            .then((res) => res.json())
-            .then((data) => {
-                setMessage('Event added successfully.');
-                setTimeout(() => {
-                    setMessage('')
-                }, 5000)
-            })
-            .catch((err) => {
-                console.log(err.message);
-                setMessage('There was a problem in creating your event.');
-                setTimeout(() => {
-                    setMessage('')
-                }, 5000)
-            });
+                .then((res) => res.json())
+                .then((data) => {
+                    setMessage('Event added successfully.');
+                    setTimeout(() => {
+                        setMessage('')
+                    }, 5000)
+                })
+                .catch((err) => {
+                    console.log(err.message);
+                    setMessage('There was a problem in creating your event.');
+                    setTimeout(() => {
+                        setMessage('')
+                    }, 5000)
+                });
             setTitle('')
             setDescription('')
             setUserId('')
@@ -97,11 +101,13 @@ export default function CalendarApp(){
         }
     }
 
-    async function handleDelete(id){
-        console.log(id);
+    async function handleDelete(id) {
         const options = {
             method: "DELETE",
-            headers: { 'Content-Type': 'application/json' }
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": localStorage.getItem("token")
+            }
         }
         const response = await fetch(`http://localhost:3000/tasks/${id}`, options);
         if (response.status === 204) {
@@ -116,7 +122,7 @@ export default function CalendarApp(){
         const [editTitle, setEditTitle] = useState(title)
         const [editDescription, setEditDescription] = useState(description)
         const [editDate, setEditDate] = useState(date)
-    
+
         const handleUserIdInput = (e) => {
             const newInput = e.target.value;
             setEditUserId(newInput)
@@ -137,7 +143,7 @@ export default function CalendarApp(){
             setEditDate(newInput)
         };
 
-    
+
         const handleEditSubmit = (e) => {
             e.preventDefault();
             if (title.length > 0 && description.length > 0) {
@@ -151,22 +157,23 @@ export default function CalendarApp(){
                     }),
                     headers: {
                         'Content-type': 'application/json; charset=UTF-8',
+                        "Authorization": localStorage.getItem("token")
                     },
                 })
-                .then((res) => res.json())
-                .then((data) => {
-                    setMessage('Event added successfully.');
-                    setTimeout(() => {
-                        setMessage('')
-                    }, 5000)
-                })
-                .catch((err) => {
-                    console.log(err.message);
-                    setMessage('There was a problem in creating your event.');
-                    setTimeout(() => {
-                        setMessage('')
-                    }, 5000)
-                });
+                    .then((res) => res.json())
+                    .then((data) => {
+                        setMessage('Event added successfully.');
+                        setTimeout(() => {
+                            setMessage('')
+                        }, 5000)
+                    })
+                    .catch((err) => {
+                        console.log(err.message);
+                        setMessage('There was a problem in creating your event.');
+                        setTimeout(() => {
+                            setMessage('')
+                        }, 5000)
+                    });
                 setTitle('')
                 setDescription('')
                 setUserId('')
@@ -179,7 +186,7 @@ export default function CalendarApp(){
                 }, 5000)
             }
         }
-    
+
         return (
             <form onSubmit={handleEditSubmit}>
                 <label htmlFor='userIdEdit'>Edit user ID</label>
@@ -189,9 +196,9 @@ export default function CalendarApp(){
                 <input type='text' onChange={handleTitleInput} id='titleEdit' value={editTitle} required />
                 <br></br>
                 <label htmlFor='eventEdit'>Edit event description here:</label>
-                <input type='text' onChange={handleDescriptionInput} value={editDescription} id='eventEdit'/>
+                <input type='text' onChange={handleDescriptionInput} value={editDescription} id='eventEdit' />
                 <label htmlFor='dateEdit'>Edit event date here (yyyy-mm-dd):</label>
-                <input type='text' onChange={handleDateInput} value={editDate} id='dateEdit'/>
+                <input type='text' onChange={handleDateInput} value={editDate} id='dateEdit' />
                 <br></br>
                 <button type="submit">Submit Edit</button>
             </form>
@@ -199,36 +206,36 @@ export default function CalendarApp(){
     }
 
 
-    return(
+    return (
         <>
-        <Calendar onChange={handleChange} value={date} className='calender'/>
-        <p>Selected date is {date.toLocaleDateString()}</p>
-        <button onClick={() => handleAddButtonClick()}>Add Event</button>
-        {addToggle == true && <form onSubmit={handleSubmit} className='container'>
-            <label htmlFor='userId'>User ID</label>
-            <input type='text' onChange={handleUserIdInput} id='userId' value={userId} required />
-            <br></br>
-            <label htmlFor='title'>Add event title here:</label>
-            <input type='text' onChange={handleTitleInput} id='title' value={title} required />
-            <br></br>
-            <label htmlFor='event'>Add event description here:</label>
-            <input type='text' onChange={handleDescriptionInput} value={description} id='event'/>
-            <br></br>
-            <input type='submit' value="Add Event" />
-            <p className='message'>{message}</p>
-        </form>}
+            <Calendar onChange={handleChange} value={date} className='calender' />
+            <p>Selected date is {date.toLocaleDateString()}</p>
+            <button onClick={() => handleAddButtonClick()}>Add Event</button>
+            {addToggle == true && <form onSubmit={handleSubmit} className='container'>
+                <label htmlFor='userId'>User ID</label>
+                <input type='text' onChange={handleUserIdInput} id='userId' value={userId} required />
+                <br></br>
+                <label htmlFor='title'>Add event title here:</label>
+                <input type='text' onChange={handleTitleInput} id='title' value={title} required />
+                <br></br>
+                <label htmlFor='event'>Add event description here:</label>
+                <input type='text' onChange={handleDescriptionInput} value={description} id='event' />
+                <br></br>
+                <input type='submit' value="Add Event" />
+                <p className='message'>{message}</p>
+            </form>}
 
-        <div>
-            {Array.isArray(data) && data.map((item, index) => (
-            <div key={index}>
-            <h1>{item.task_title}</h1>
-            <p>{item.task_description}</p>
-            <button onClick={() => handleDelete(item.task_id)}>Delete Event</button>
-            <button onClick={() => handleEditButtonClick(item.task_id)}>Edit Event</button>
-            {editingEvent === item.task_id && editToggle == true && <EditForm taskId={item.task_id} userId={item.user_id} title={item.task_title} description={item.task_description} date={item.task_date}/>}
+            <div>
+                {Array.isArray(data) && data.map((item, index) => (
+                    <div key={index}>
+                        <h1>{item.task_title}</h1>
+                        <p>{item.task_description}</p>
+                        <button onClick={() => handleDelete(item.task_id)}>Delete Event</button>
+                        <button onClick={() => handleEditButtonClick(item.task_id)}>Edit Event</button>
+                        {editingEvent === item.task_id && editToggle == true && <EditForm taskId={item.task_id} userId={item.user_id} title={item.task_title} description={item.task_description} date={item.task_date} />}
+                    </div>
+                ))}
             </div>
-            ))}
-        </div>
-    </>
+        </>
     )
 }

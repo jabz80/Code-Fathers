@@ -19,9 +19,6 @@ export default function RegisterPage() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(formUsername);
-    console.log(formPassword);
-    console.log(formName);
     const options = {
       method: 'POST',
       headers: {
@@ -49,9 +46,9 @@ export default function RegisterPage() {
 
   return (
     <div>
-      <h1>REGISTER</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
+      <h1 className='register-header'>REGISTER</h1>
+      <form className='register-form' onSubmit={handleSubmit}>
+        <label className='register-name'>
           Full Name:
           <input
             type="text"
@@ -59,7 +56,7 @@ export default function RegisterPage() {
             onChange={handleName}
           />
         </label>
-        <label>
+        <label className='register-username'>
           Username:
           <input
             type="text"
@@ -67,7 +64,7 @@ export default function RegisterPage() {
             onChange={handleInput}
           />
         </label>
-        <label>
+        <label className='register-password'>
           Password:
           <input
             type="password"

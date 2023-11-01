@@ -25,6 +25,12 @@ export default function Header() {
             <li>
             <NavLink to="/timer" style={styles}><button>Timer</button></NavLink>
             </li>
+            <li>
+            <NavLink to="/register" style={styles}><button>Register</button></NavLink>
+            </li>
+            <li>
+            <NavLink to="/login" style={styles}><button>Login</button></NavLink>
+            </li>
           </ul>
         </nav>
       </header>

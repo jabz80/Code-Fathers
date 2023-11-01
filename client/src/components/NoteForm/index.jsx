@@ -18,6 +18,7 @@ export default function NoteForm({ inputText, setInputText, context, setContext,
                     body: JSON.stringify({ user_id: 1, title: inputText, context: context, updated_at: null }),
                     headers: {
                         'Content-type': 'application/json; charset=UTF-8',
+                        "Authorization": localStorage.getItem("token")
                     },
                 })
                     .then((res) => res.json())
@@ -48,6 +49,7 @@ export default function NoteForm({ inputText, setInputText, context, setContext,
                     body: JSON.stringify({ note_id: id, user_id: 1, title: inputText, context: context, updated_at: null }),
                     headers: {
                         'Content-type': 'application/json; charset=UTF-8',
+                        "Authorization": localStorage.getItem("token")
                     },
                 })
                     .then((res) => res.json())
