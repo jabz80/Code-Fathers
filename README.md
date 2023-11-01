@@ -25,3 +25,5 @@ headers: {
 }
 }
 const response = await fetch("http://localhost:3000/INSERT-ROUTE", options);
+
+NEVER USE: window.location.assign('/'); it will refresh all your states, use navigate instead

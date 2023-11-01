@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useTimer } from '../../contexts/PomodoroContext';
 
 export default function LoginPage() {
   const { isLoggedIn, setIsLoggedIn } = useTimer();
-
   const [formUsername, setFormUsername] = useState('');
   const [formPassword, setFormPassword] = useState('');
+
+  const navigate = useNavigate();
 
   function handleInput(e) {
     setFormUsername(e.target.value);
@@ -35,10 +37,10 @@ export default function LoginPage() {
     const data = await response.json();
 
     if (response.status == 200) {
-      await setIsLoggedIn(true);
+      setIsLoggedIn(true);
       localStorage.setItem('token', data.token);
-
-      window.location.assign('/');
+      // window.location.assign('/');
+      navigate('/');
     } else {
       alert(data.error);
       setIsLoggedIn(false);
