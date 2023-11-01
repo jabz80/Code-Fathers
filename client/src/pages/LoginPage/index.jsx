@@ -87,7 +87,9 @@ export default function LoginPage() {
           />
         </label>
         <button type="submit">Submit</button>
-        <Link to="/register" ><button className='btn-register'>Register</button></Link>
+        <Link to="/register">
+          <button className="btn-register">Register</button>
+        </Link>
       </form>
     </div>
   );
