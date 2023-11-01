@@ -4,7 +4,7 @@ import index from '../../pages/CalendarPage';
 import { useNavigate } from 'react-router-dom';
 
 export default function CalendarApp() {
-    navigate = useNavigate()
+  const navigate = useNavigate()
   const [date, setDate] = useState(new Date());
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
