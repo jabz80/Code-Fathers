@@ -1,14 +1,24 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Header } from './components';
-import { Footer } from './components';
+import { Header, Protected, Footer } from './components';
+//import { Footer } from './components';
 import './App.css';
 
-import { HomePage, AboutPage, NotFoundPage, CalendarPage, NotesPage, AddNotePage, PomodoroPage, UpdateNotePage, LoginPage, RegisterPage } from './pages';
-import { TimerProvider } from './contexts/PomodoroContext'
+import {
+  HomePage,
+  AboutPage,
+  NotFoundPage,
+  CalendarPage,
+  NotesPage,
+  AddNotePage,
+  PomodoroPage,
+  UpdateNotePage,
+  LoginPage,
+  RegisterPage,
+} from './pages';
+import { TimerProvider } from './contexts/PomodoroContext';
 
 import NotePage from './pages/NotePage';
-//Don't forget to change name of Provider
 
 function App() {
   return (
@@ -16,15 +26,66 @@ function App() {
       <Routes>
         <Route path="/" element={<Header />}>
           <Route index element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/calendar" element={<CalendarPage />} />
-          <Route path="/notes" element={<NotesPage />} />
-          <Route path="/notes/:id" element={<NotePage />} />
 
-          <Route path='/notes/new' element={<AddNotePage />} />
-          <Route path='/notes/update/:id' element={<UpdateNotePage />} />
+          <Route
+            path="/about"
+            element={
+              <Protected>
+                <AboutPage />
+              </Protected>
+            }
+          />
+          <Route
+            path="/calendar"
+            element={
+              <Protected>
+                <CalendarPage />
+              </Protected>
+            }
+          />
+          <Route
+            path="/notes"
+            element={
+              <Protected>
+                <NotesPage />
+              </Protected>
+            }
+          />
+          <Route
+            path="/notes/:id"
+            element={
+              <Protected>
+                <NotePage />
+              </Protected>
+            }
+          />
 
-          <Route path="/timer" element={<PomodoroPage />} />
+          <Route
+            path="/notes/new"
+            element={
+              <Protected>
+                <AddNotePage />
+              </Protected>
+            }
+          />
+          <Route
+            path="/notes/update/:id"
+            element={
+              <Protected>
+                <UpdateNotePage />
+              </Protected>
+            }
+          />
+
+          <Route
+            path="/timer"
+            element={
+              <Protected>
+                <PomodoroPage />
+              </Protected>
+            }
+          />
+
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/*" element={<NotFoundPage />} />

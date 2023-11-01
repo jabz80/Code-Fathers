@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import pingSound from "../../assets/pingSound.mp3"
+import pingSound from '../../assets/pingSound.mp3';
 
 const TimerContext = createContext();
 
@@ -13,6 +13,7 @@ export const TimerProvider = ({ children }) => {
   const [breakTime, setBreakTime] = useState(5);
   const [showSettings, setShowSettings] = useState(false);
   const [isActive, setIsActive] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const toggleTimer = () => {
     setIsRunning(!isRunning);
@@ -80,7 +81,25 @@ export const TimerProvider = ({ children }) => {
   }, [seconds, isRunning]);
 
   return (
-    <TimerContext.Provider value={{ minutes, seconds, displayMessage, isRunning, revisionTime, breakTime, showSettings, isActive, toggleTimer, toggleSettings, handleRevisionChange, handleBreakChange, resetTimer }}>
+    <TimerContext.Provider
+      value={{
+        minutes,
+        seconds,
+        displayMessage,
+        isRunning,
+        revisionTime,
+        breakTime,
+        showSettings,
+        isActive,
+        toggleTimer,
+        toggleSettings,
+        handleRevisionChange,
+        handleBreakChange,
+        resetTimer,
+        isLoggedIn,
+        setIsLoggedIn,
+      }}
+    >
       {children}
     </TimerContext.Provider>
   );
