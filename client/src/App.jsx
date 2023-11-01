@@ -30,9 +30,7 @@ function App() {
           <Route
             path="/about"
             element={
-              <Protected>
                 <AboutPage />
-              </Protected>
             }
           />
           <Route

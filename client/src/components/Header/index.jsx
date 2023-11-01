@@ -8,12 +8,11 @@ export default function Header() {
     <main>
       <header>
         <nav className='navbar'>
-          <h1>Code Fathers</h1>
+          {/* <h1>Code Fathers</h1> */}
           <ul role="unorderedList">
             <li>
               <NavLink to="/" style={styles}><button>Home</button></NavLink>
             </li>
-
             <li>
               <NavLink to="/calendar" style={styles}><button>Calendar</button></NavLink>
             </li>
@@ -29,10 +28,8 @@ export default function Header() {
             <li>
               <NavLink to="/about" style={styles}><button>About</button></NavLink>
             </li>
-            <li>
-              <NavLink to="/login" style={styles}><button>Login</button></NavLink>
-            </li>
           </ul>
+              <NavLink id="loginButton" to="/login" style={styles}><button>Login</button></NavLink>
         </nav>
       </header>
       <Outlet />
