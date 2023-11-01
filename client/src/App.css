@@ -64,12 +64,13 @@ body {
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-bottom: 30px;
   background-color: #c6c3bb;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.399);
-  width: fit-content;
+  width: 60vw;
   border-radius: 10px;
+  padding-left: 1%;
 }
 
 .navbar h1 {
@@ -97,7 +98,7 @@ body {
   transition: transform 0.3s, background-color 0.3s;
 }
 
-#loginButton {
+/* #loginButton {
   padding-right: 4rem;
   margin: 5px;
 }
@@ -110,7 +111,7 @@ body {
   background-color: rgb(93, 148, 121);
   transition: transform 0.3s, background-color 0.3s;
   padding-right: 20px;
-}
+} */
 
 .navbar li button:hover {
   color: #ffffff;
