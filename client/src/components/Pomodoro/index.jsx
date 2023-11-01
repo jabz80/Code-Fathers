@@ -48,7 +48,7 @@ export default function Pomodoro() {
           })}
         />
       </div>
-      <div>
+      <div className='button'>
         <button role="startButton" onClick={toggleTimer}>{isActive ? "Pause" : "Start"}</button>
         <button role="resetButton" onClick={resetTimer}>Reset</button>
         <button role="settingsButton" onClick={toggleSettings} disabled={isActive}>Settings</button>
