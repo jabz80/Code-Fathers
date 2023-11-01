@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useTimer } from '../../contexts/PomodoroContext';
 
 export default function LoginPage() {
+  const { isLoggedIn, setIsLoggedIn } = useTimer();
+
   const [formUsername, setFormUsername] = useState('');
   const [formPassword, setFormPassword] = useState('');
 
@@ -16,6 +19,7 @@ export default function LoginPage() {
     e.preventDefault();
     console.log(formUsername);
     console.log(formPassword);
+
     const options = {
       method: 'POST',
       headers: {
@@ -31,12 +35,20 @@ export default function LoginPage() {
     const data = await response.json();
 
     if (response.status == 200) {
+      await setIsLoggedIn(true);
       localStorage.setItem('token', data.token);
+
       window.location.assign('/');
     } else {
       alert(data.error);
+      setIsLoggedIn(false);
     }
   }
+
+  useEffect(() => {
+    setIsLoggedIn(false);
+    localStorage.clear();
+  }, []);
 
   return (
     <div>
