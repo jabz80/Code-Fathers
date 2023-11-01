@@ -25,9 +25,8 @@ const NotePage = () => {
             setLoading(false);
         };
 
-        loadNote();
-
-    }, [])
+    loadNote();
+  }, []);
 
 
     function handleBack() {
@@ -42,8 +41,13 @@ const NotePage = () => {
         </main>
     }
 
-    return loading ? <h2><em>loading...</em></h2> : displayNote();
-
+  return loading ? (
+    <h2>
+      <em>loading...</em>
+    </h2>
+  ) : (
+    displayNote()
+  );
 };
 
 export default NotePage;

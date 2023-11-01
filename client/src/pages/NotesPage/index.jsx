@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Notes, NoteCard, NoteFilters } from '../../components'
 import { Link, useNavigate } from 'react-router-dom';
 export default function NotesPage() {
-   
+
   const [notes, setNotes] = useState([]);
   const [textFilter, setTextFilter] = useState("")
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ export default function NotesPage() {
     };
 
     loadNotes();
-  }, [notes])
+  }, [notes]);
 
   function displayNotes() {
     try {
@@ -43,11 +43,11 @@ export default function NotesPage() {
     <main className="notes-main">
       <h1>Notes</h1>
 
-      <Link className="add-note-btn" to="/notes/new">Add a Note</Link>
+      <Link className="add-note-btn" to="/notes/new">
+        Add a Note
+      </Link>
       <NoteFilters textFilter={textFilter} setTextFilter={setTextFilter} />
-      <div className="note-holder">
-        {displayNotes()}
-      </div>
+      <div className="note-holder">{displayNotes()}</div>
     </main>
-  )
+  );
 }

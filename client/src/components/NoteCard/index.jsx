@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const linkStyle = {
-    color: '#875053'
+  color: '#875053',
 };
 
 const NoteCard = ({ id, user_id, title, context, created_at, updated_at }) => {
@@ -23,20 +23,23 @@ const NoteCard = ({ id, user_id, title, context, created_at, updated_at }) => {
         navigate(`/notes/update/${id}`);
     }
 
-    return (
-        <div className='note-card'>
-            <h3>
-                <Link to={`/notes/${id}`} style={linkStyle}>
-                    {title}
-                </Link>
-            </h3>
-            <p className="notes-details-holder">
-            </p>
-            <button className='update-note-btn' onClick={handleUpdate}>Update</button>
-            <button className='delete-note-btn' onClick={handleDelete}>Delete</button>
-            <br />
-        </div>
-    );
+  return (
+    <div className="note-card">
+      <h3>
+        <Link to={`/notes/${id}`} style={linkStyle}>
+          {title}
+        </Link>
+      </h3>
+      <p className="notes-details-holder"></p>
+      <button className="update-note-btn" onClick={handleUpdate}>
+        Update
+      </button>
+      <button className="delete-note-btn" onClick={handleDelete}>
+        Delete
+      </button>
+      <br />
+    </div>
+  );
 };
 
 export default NoteCard;
