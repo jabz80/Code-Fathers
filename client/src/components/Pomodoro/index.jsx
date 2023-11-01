@@ -55,7 +55,7 @@ export default function Pomodoro() {
         {showSettings && (
           <div>
             <div>
-              <h3 role="revisionTime">Revision Time: {revisionTime} minutes</h3>
+              <h3 className="sliderText" role="revisionTime">Revision Time: {revisionTime} minutes</h3>
               <Slider
                 min={1}
                 max={60}
@@ -65,7 +65,7 @@ export default function Pomodoro() {
               />
             </div>
             <div>
-              <h3 role="breakTime">Break Time: {breakTime} minutes</h3>
+              <h3 className="sliderText" role="breakTime">Break Time: {breakTime} minutes</h3>
               <Slider
                 min={1}
                 max={30}

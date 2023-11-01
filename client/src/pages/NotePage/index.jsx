@@ -11,8 +11,15 @@ const NotePage = () => {
       const currentURL = window.location.href;
       const urlSplit = currentURL.split('/');
       const id = urlSplit[urlSplit.length - 1];
+      
+      const options = {
+        headers: {
+          Authorization: localStorage.getItem('token'),
+        },
+      };
 
-      const response = await fetch(`http://localhost:3000/notes/${id}`);
+
+      const response = await fetch(`http://localhost:3000/notes/${id}`, options);
       const data = await response.json();
       setNote(data);
       setLoading(false);
