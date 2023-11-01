@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import index from '../../pages/CalendarPage';
+import { useNavigate } from 'react-router-dom';
 
 export default function CalendarApp() {
+    navigate = useNavigate()
   const [date, setDate] = useState(new Date());
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -20,16 +22,20 @@ export default function CalendarApp() {
     date = date.replaceAll('/', '');
     date = parseInt(date);
     console.log(date);
-    //response keeps failing. Problem with the backend?
     const options = {
       headers: {
         Authorization: localStorage.getItem('token'),
       },
     };
-    const response = await fetch(
+    try {
+        const response = await fetch(
       `http://localhost:3000/tasks/date/${date}`,
       options
-    );
+    );    
+    } catch (error) {
+        navigate("/login")
+    }
+
     const tasks = await response.json();
     setData(tasks);
     setUserId('');
@@ -66,6 +72,8 @@ export default function CalendarApp() {
         e.preventDefault()
         // Add event function using input value here
         if (title.length > 0 && description.length > 0) {
+            
+            
             fetch('http://localhost:3000/tasks/', {
                 method: 'POST',
                 body: JSON.stringify({

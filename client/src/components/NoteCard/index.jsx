@@ -9,6 +9,7 @@ const NoteCard = ({ id, user_id, title, context, created_at, updated_at }) => {
     const navigate = useNavigate();
 
     async function handleDelete(e) {
+      try {
         const response = await fetch(`http://localhost:3000/notes/${id}`, {
             method: 'DELETE',
             body: JSON.stringify({}),
@@ -17,6 +18,10 @@ const NoteCard = ({ id, user_id, title, context, created_at, updated_at }) => {
                 "Authorization": localStorage.getItem("token")
             },
         });
+      } catch (error) {
+        navigate("/login")
+      } 
+      
     }
 
     function handleUpdate(e) {
