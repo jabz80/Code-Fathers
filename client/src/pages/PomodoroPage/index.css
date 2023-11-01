@@ -16,7 +16,6 @@ body {
     text-align: center;
   }
 
-
   .pomodoro h1 {
     font-size: 24px;
     margin: 0;
@@ -48,7 +47,7 @@ body {
     margin-top: 10px;
   }
   
-  .pomodoro h2 {
+  .pomodoro h3 {
     font-size: 18px;
     margin: 10px 0;
     color: white;

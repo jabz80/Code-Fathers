@@ -42,7 +42,7 @@ export default function Pomodoro() {
           text={`${timerMinutes}:${timerSeconds}`}
           styles={buildStyles({
             textSize: "16px",
-            textColor: "#333",
+            textColor: "#ffffff",
             pathColor: pathColour,
             trailColor: "#f3f3f3",
           })}
