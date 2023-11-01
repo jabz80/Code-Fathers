@@ -6,11 +6,65 @@ body {
   background: linear-gradient(to bottom right, #fdfcfb, #e2d1c3);
 }
 
+.banner {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.banner img {
+  width: 99vw;
+  height: 80vh;
+  object-fit: cover;
+}
+
+.banner-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.banner h1 {
+  font-size: 2em;
+  margin-bottom: 30px;
+  text-align: center;
+  color:rgba(4, 0, 0, 0.746);
+}
+
+.banner em {
+  font-size: 1.4em;
+  margin-bottom: 20px;
+  color:rgba(4, 0, 0, 0.746);
+}
+
+.banner button {
+  color: white;
+  font-size: 1.2em;
+  margin: 50px;
+  padding: 10px 20px;
+  background-color: rgb(93, 148, 121);
+  transition: transform 0.3s, background-color 0.3s;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+.banner button:hover {
+  background-color: #3c7760;
+  transform: scale(1.1);
+}
+
+
 .navbar {
   display: flex;
   justify-content: space-around;
   margin-top: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   background-color: #c6c3bb;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.399);
   width: 95vw;
@@ -99,7 +153,8 @@ input[type='submit'] {
 
 input[type='submit']:hover {
   background-color: #3c7760;
-  transform: scale(1.1); /* Reduce the size to 90% when hovering */
+  transform: scale(1.1);
+  /* Reduce the size to 90% when hovering */
 }
 
 .container {
@@ -150,34 +205,37 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative; 
+  position: relative;
 }
 
 .delete-note-btn {
-  position: absolute; 
-  bottom: 5%; 
-  right: 5%; 
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  background-color: rgb(93, 148, 121);
 }
 
 .update-note-btn {
-  position: absolute; 
-  bottom: 5%; 
-  left: 5%; 
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  background-color: rgb(93, 148, 121);
 }
 
-.add-note-btn  {
+.add-note-btn {
   text-decoration: none;
   padding: 12px;
- text-align: center;
+  text-align: center;
   border-radius: 10px;
   color: white;
   font-size: 17px;
   width: 150px;
   background-color: rgb(93, 148, 121);
-  transition: transform 0.3s, background-color 0.3s; 
+  transition: transform 0.3s, background-color 0.3s;
+
 }
 
-.add-note-btn:hover  {
+.add-note-btn:hover {
   background-color: #3c7760;
   transform: scale(1.1);
 }
@@ -202,4 +260,65 @@ button {
   color: rgba(0, 0, 0, 0.4);
   text-align: center;
   padding: 20px;
+}
+
+
+
+.login-header {
+  display: flex;
+  justify-content: center;
+}
+
+.login-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.login-username input {
+  width: 400px;
+  margin: 10px;
+}
+
+.login-password input {
+  width: 300px;
+  margin: 10px;
+  margin-bottom: 50px;
+}
+
+
+.register-header {
+  display: flex;
+  justify-content: center;
+}
+
+.register-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.register-name input {
+  width: 400px;
+  margin: 10px;
+}
+
+.register-username input {
+  width: 400px;
+  margin: 10px;
+}
+
+.register-password input {
+  width: 300px;
+  margin: 10px;
+  margin-bottom: 50px;
+}
+
+button {
+  background-color: #3c7760 !important;
+  color: white;
 }

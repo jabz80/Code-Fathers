@@ -6,23 +6,27 @@ const linkStyle = {
 };
 
 const NoteCard = ({ id, user_id, title, context, created_at, updated_at }) => {
-  const navigate = useNavigate(); // Get the navigate function
+    const navigate = useNavigate();
 
-  async function handleDelete(e) {
-    const response = await fetch(`http://localhost:3000/notes/${id}`, {
-      method: 'DELETE',
-      body: JSON.stringify({}),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-        Authorization: localStorage.getItem('token'),
-      },
-    });
-  }
+    async function handleDelete(e) {
+      try {
+        const response = await fetch(`http://localhost:3000/notes/${id}`, {
+            method: 'DELETE',
+            body: JSON.stringify({}),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+                "Authorization": localStorage.getItem("token")
+            },
+        });
+      } catch (error) {
+        navigate("/login")
+      } 
+      
+    }
 
-  function handleUpdate(e) {
-    // Use the navigate function to navigate to the "Update" page
-    navigate(`/notes/update/${id}`);
-  }
+    function handleUpdate(e) {
+        navigate(`/notes/update/${id}`);
+    }
 
   return (
     <div className="note-card">
