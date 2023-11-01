@@ -56,10 +56,16 @@ export default function CalendarApp(){
                     }
 
             async function fetchData(date){
+                const options = {
+                    headers: {
+                        "Authorization": localStorage.getItem("token")
+                    }
+                }
+
                 console.log(date);
                 let formattedDate = date ? date.toLocaleDateString() : '';
                 formattedDate = formattedDate.replaceAll("/", "")
-                const response = await fetch (`http://localhost:3000/tasks/date/${formattedDate}`)
+                const response = await fetch (`http://localhost:3000/tasks/date/${formattedDate}`, options)
                 const tasks = await response.json()
                 setData(tasks)
             }
@@ -71,8 +77,13 @@ export default function CalendarApp(){
         }, [eventOccurred, date])
 
     async function fetchData(date){
+        const options = {
+            headers: {
+                "Authorization": localStorage.getItem("token")
+            }
+        }
         console.log(date);
-        const response = await fetch (`http://localhost:3000/tasks/date/${date}`)
+        const response = await fetch (`http://localhost:3000/tasks/date/${date}`, options)
         const tasks = await response.json()
         setData(tasks)
     }
@@ -123,6 +134,7 @@ export default function CalendarApp(){
                     task_date: date
                 }),
                 headers: {
+                    'Authorization': localStorage.getItem("token"),
                     'Content-type': 'application/json; charset=UTF-8',
                 },
             })
@@ -157,7 +169,9 @@ export default function CalendarApp(){
         console.log(id);
         const options = {
             method: "DELETE",
-            headers: { 'Content-Type': 'application/json' }
+            headers: { 
+                'Authorization': localStorage.getItem("token"),
+                'Content-Type': 'application/json' }
         }
         const response = await fetch(`http://localhost:3000/tasks/${id}`, options);
         if (response.status === 204) {
@@ -262,6 +276,7 @@ export default function CalendarApp(){
                         task_date: editDate
                     }),
                     headers: {
+                        'Authorization': localStorage.getItem("token"),
                         'Content-type': 'application/json; charset=UTF-8',
                     },
                 })
@@ -297,15 +312,15 @@ export default function CalendarApp(){
         return (
             <form onSubmit={handleEditSubmit}>
                 <label htmlFor='userIdEdit'>Edit user ID</label>
-                <input type='text' onChange={handleUserIdInput} id='userIdEdit' value={editUserId}  />
+                <input type='text' onChange={handleUserIdInput} id='userIdEdit' placeholder={editUserId}  required/>
                 <br></br>
                 <label htmlFor='titleEdit'>Edit event title here:</label>
-                <input type='text' onChange={handleTitleInput} id='titleEdit' value={editTitle}  />
+                <input type='text' onChange={handleTitleInput} id='titleEdit' placeholder={editTitle}  required/>
                 <br></br>
                 <label htmlFor='eventEdit'>Edit event description here:</label>
-                <input type='text' onChange={handleDescriptionInput} value={editDescription} id='eventEdit'/>
+                <input type='text' onChange={handleDescriptionInput} placeholder={editDescription} id='eventEdit' required/>
                 <label htmlFor='dateEdit'>Edit event date here (yyyy-mm-dd):</label>
-                <input type='text' onChange={handleDateInput} value={editDate} id='dateEdit'/>
+                <input type='text' onChange={handleDateInput} placeholder={editDate} id='dateEdit' required/>
                 <br></br>
                 <button type="submit">Submit Edit</button>
             </form>

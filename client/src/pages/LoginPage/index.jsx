@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate, Link } from 'react-router-dom';
 import { useTimer } from '../../contexts/PomodoroContext';
 
 export default function LoginPage() {
@@ -70,6 +70,7 @@ export default function LoginPage() {
           />
         </label>
         <button type="submit">Submit</button>
+        <Link to="/register" ><button className='btn-register'>Register</button></Link>
       </form>
     </div>
   );
