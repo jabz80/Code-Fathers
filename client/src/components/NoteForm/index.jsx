@@ -1,3 +1,6 @@
+import { useNavigate } from "react-router-dom";
+
+
 export default function NoteForm({
   inputText,
   setInputText,
@@ -7,6 +10,9 @@ export default function NoteForm({
   setMessage,
   type,
 }) {
+
+  const navigate = useNavigate()
+
   function handleInput(e) {
     setInputText(e.target.value);
   }
@@ -36,7 +42,7 @@ export default function NoteForm({
           .then((res) => res.json())
           .then((data) => {
             //send them to the newly created note.
-            window.location.href = `http://localhost:5173/notes/${data.id}`;
+             navigate(`/notes/${data.id}`);
           })
           .catch((err) => {
             console.log(err.message);
