@@ -3,7 +3,8 @@
 body {
   font-family: 'Poppins', sans-serif;
   font-size: 24px;
-  background: linear-gradient(to bottom right, #fdfcfb, #e2d1c3);
+  background-image: url("./src/assets/homepic.jpg");
+  background-size: cover;
 }
 
 .banner {
@@ -64,11 +65,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 10px;
   margin-bottom: 30px;
   background-color: #c6c3bb;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.399);
-  width: 95vw;
+  width: fit-content;
   border-radius: 10px;
 }
 
