@@ -3,12 +3,14 @@
 body {
   font-family: 'Poppins', sans-serif;
   font-size: 24px;
+
  
 }
 
 .login-page {
   position: relative;
   background-image: url("./src/assets/homepic.jpg");
+
   background-size: cover;
   width: 100%;
   height: 100vh;
@@ -50,14 +52,16 @@ body {
 
 .banner h1 {
   font-size: 2em;
+
+
   text-align: center;
-  color:rgba(4, 0, 0, 0.746);
+  color: rgba(4, 0, 0, 0.746);
 }
 
 .banner em {
   font-size: 1.4em;
   margin-bottom: 20px;
-  color:rgba(4, 0, 0, 0.746);
+  color: rgba(4, 0, 0, 0.746);
 }
 
 .banner button {
@@ -72,12 +76,10 @@ body {
   cursor: pointer;
 }
 
-
 .banner button:hover {
   background-color: #3c7760;
   transform: scale(1.1);
 }
-
 
 .navbar {
   display: flex;
@@ -123,7 +125,6 @@ body {
   width: 150px;
   transition: transform 0.3s, background-color 0.3s;
   padding-right: 20px;
-  
 }
 
 #loginButton:hover {
@@ -144,7 +145,6 @@ body {
 .navbar li a:focus {
   color: rgb(59, 102, 81);
 }
-
 
 @media screen and (max-width: 800px) {
   .navbar {
@@ -290,7 +290,6 @@ button {
   width: 150px;
   background-color: rgb(93, 148, 121);
   transition: transform 0.3s, background-color 0.3s;
-
 }
 
 .add-note-btn:hover {
@@ -327,7 +326,6 @@ button {
   color: white;
 }
 
-
 .login-header {
   display: flex;
   justify-content: center;
@@ -338,7 +336,6 @@ button {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-
 }
 
 .login-username input {
@@ -374,7 +371,6 @@ button {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-
 }
 
 .register-name input {
@@ -420,7 +416,6 @@ button {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-
 }
 
 .login-username input {
@@ -435,7 +430,6 @@ button {
   margin-bottom: 50px;
 }
 
-
 .register-header {
   display: flex;
   justify-content: center;
@@ -446,7 +440,6 @@ button {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-
 }
 
 .register-name input {
@@ -475,7 +468,6 @@ button {
   margin: 20px;
   padding: 10px;
   transition: transform 0.3s, background-color 0.3s;
-
 }
 
 .btn-register:hover {

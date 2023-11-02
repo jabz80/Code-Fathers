@@ -23,30 +23,34 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
+
                 <span class="strong">74.13% </span>
                 <span class="quiet">Statements</span>
                 <span class='fraction'>86/116</span>
+
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>8/10</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.42% </span>
+                <span class="strong">14.28% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/7</span>
+                <span class='fraction'>1/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
+
                 <span class="strong">74.13% </span>
                 <span class="quiet">Lines</span>
                 <span class='fraction'>86/116</span>
+
             </div>
         
             
@@ -185,6 +189,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+
 <span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-yes">15x</span>
@@ -211,12 +216,14 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-yes">15x</span>
+
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+
 <span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -235,6 +242,15 @@
 <span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">2x</span>
+
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -250,11 +266,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -295,6 +307,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-yes">15x</span>
+
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { createContext, useContext, useState, useEffect } from 'react';
 import pingSound from '../../assets/pingSound.mp3';
 &nbsp;
@@ -314,17 +327,17 @@ export const TimerProvider = ({ children }) =&gt; {
   const [userID, setUserID] = useState(0);
   const [username, setUsername] = useState('');
 &nbsp;
-  const toggleTimer = () =&gt; {
-    setIsRunning(!isRunning);
-    if (<span class="branch-0 cbranch-no" title="branch not covered" >showSettings &amp;&amp; !isRunning) <span class="branch-0 cbranch-no" title="branch not covered" >{</span></span>
+  const toggleTimer = <span class="fstat-no" title="function not covered" >() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    setIsRunning(!isRunning);</span>
+<span class="cstat-no" title="statement not covered" >    if (showSettings &amp;&amp; !isRunning) {</span>
 <span class="cstat-no" title="statement not covered" >      toggleSettings();</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
-    setIsActive(!isActive);
-  };
+<span class="cstat-no" title="statement not covered" >    setIsActive(!isActive);</span>
+<span class="cstat-no" title="statement not covered" >  };</span>
 &nbsp;
-  const toggleSettings = () =&gt; {
-    setShowSettings(!showSettings);
-  };
+  const toggleSettings = <span class="fstat-no" title="function not covered" >() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    setShowSettings(!showSettings);</span>
+<span class="cstat-no" title="statement not covered" >  };</span>
 &nbsp;
   const handleRevisionChange = <span class="fstat-no" title="function not covered" >(value) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    setRevisionTime(value);</span>
@@ -338,19 +351,19 @@ export const TimerProvider = ({ children }) =&gt; {
 <span class="cstat-no" title="statement not covered" >    setBreakTime(value);</span>
 <span class="cstat-no" title="statement not covered" >  };</span>
 &nbsp;
-  const resetTimer = () =&gt; {
-    setMinutes(25);
-    setSeconds(0);
-    setIsRunning(false);
-    setDisplayMessage(false);
-    setIsActive(false);
-    setRevisionTime(25);
-    setBreakTime(5);
-  };
+  const resetTimer = <span class="fstat-no" title="function not covered" >() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    setMinutes(25);</span>
+<span class="cstat-no" title="statement not covered" >    setSeconds(0);</span>
+<span class="cstat-no" title="statement not covered" >    setIsRunning(false);</span>
+<span class="cstat-no" title="statement not covered" >    setDisplayMessage(false);</span>
+<span class="cstat-no" title="statement not covered" >    setIsActive(false);</span>
+<span class="cstat-no" title="statement not covered" >    setRevisionTime(25);</span>
+<span class="cstat-no" title="statement not covered" >    setBreakTime(5);</span>
+<span class="cstat-no" title="statement not covered" >  };</span>
 &nbsp;
   useEffect(() =&gt; {
-    if (isRunning) {
-      const interval = setInterval(() =&gt; {
+    if (isRunning) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >      const interval = setInterval(() =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        if (seconds === 0) {</span>
 <span class="cstat-no" title="statement not covered" >          if (minutes !== 0) {</span>
 <span class="cstat-no" title="statement not covered" >            setMinutes((prevState) =&gt; prevState - 1);</span>
@@ -371,12 +384,12 @@ export const TimerProvider = ({ children }) =&gt; {
 <span class="cstat-no" title="statement not covered" >        } else {</span>
 <span class="cstat-no" title="statement not covered" >          setSeconds((prevState) =&gt; prevState - 1);</span>
 <span class="cstat-no" title="statement not covered" >        }</span>
-      }, 1000);
-&nbsp;
-      return () =&gt; {
-        clearInterval(interval);
-      };
-    }
+<span class="cstat-no" title="statement not covered" >      }, 1000);</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >      return () =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        clearInterval(interval);</span>
+<span class="cstat-no" title="statement not covered" >      };</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
   }, [seconds, isRunning]);
 &nbsp;
   return (
@@ -408,9 +421,9 @@ export const TimerProvider = ({ children }) =&gt; {
   );
 };
 &nbsp;
-export const useTimer = () =&gt; {
-  return useContext(TimerContext);
-};
+export const useTimer = <span class="fstat-no" title="function not covered" >() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  return useContext(TimerContext);</span>
+<span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -418,7 +431,9 @@ export const useTimer = () =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+
                 at 2023-11-02T11:38:32.829Z
+
             </div>
         <script src="../../prettify.js"></script>
         <script>

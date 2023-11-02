@@ -14,16 +14,19 @@ export default function CalendarApp() {
   const [addToggle, setAddToggle] = useState(false);
   const [editToggle, setEditToggle] = useState(false);
   const [eventOccurred, setEventOccurred] = useState(false);
+
   const { userID, username } = useTimer();
+
   useEffect(() => {
     function displayEvents() {
       const formattedDate = date ? date.toLocaleDateString() : '';
-      
       return (
         <>
           <Calendar onChange={handleChange} value={date} className="calender" />
+
           <p className='displayDate'>{formattedDate}</p>
             {formattedDate ? (
+
             <button onClick={() => handleAddButtonClick()}>Add Event</button>
           ) : null}
           {addToggle == true && (

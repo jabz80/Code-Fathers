@@ -6,8 +6,10 @@ export default function HomePage() {
   const { isLoggedIn, username } = useTimer();
   return (
     <div className="banner">
+
      {isLoggedIn ? <h1>Hi, {username}!</h1> : ''}
       <h1 role="title">Welcome to ReviseHub</h1>
+
       {/* <img src="./src/assets/homepic.jpg" alt="homepage pic" /> */}
       <div className="banner-content">
         <h3>
