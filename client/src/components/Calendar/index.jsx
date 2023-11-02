@@ -7,7 +7,7 @@ export default function CalendarApp() {
   const [date, setDate] = useState(null);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState('A');
   const [userId, setUserId] = useState('');
   const [data, setData] = useState(null);
   const [editingEvent, setEditingEvent] = useState(null);
@@ -16,16 +16,15 @@ export default function CalendarApp() {
   const [eventOccurred, setEventOccurred] = useState(false);
 
   const { userID } = useTimer();
-
   useEffect(() => {
     function displayEvents() {
       const formattedDate = date ? date.toLocaleDateString() : '';
-
+      
       return (
         <>
           <Calendar onChange={handleChange} value={date} className="calender" />
           <p>{formattedDate}</p>
-          {formattedDate ? (
+            {formattedDate ? (
             <button onClick={() => handleAddButtonClick()}>Add Event</button>
           ) : null}
           {addToggle == true && (
@@ -49,10 +48,8 @@ export default function CalendarApp() {
               />
               <br></br>
               <input type="submit" value="Add Event" />
-              <p className="message">{message}</p>
             </form>
           )}
-
           <div>
             {Array.isArray(data) &&
               data.map((item, index) => (
@@ -81,39 +78,37 @@ export default function CalendarApp() {
       );
     }
 
-    async function fetchData(date) {
+    async function fetchData(date, userID) {
       const options = {
         headers: {
           Authorization: localStorage.getItem('token'),
         },
       };
 
-      console.log(date);
       let formattedDate = date ? date.toLocaleDateString() : '';
       formattedDate = formattedDate.replaceAll('/', '');
       const response = await fetch(
-        `http://localhost:3000/tasks/date/${formattedDate}`,
+        `http://localhost:3000/tasks/date/${formattedDate}/${userID}`,
         options
       );
       const tasks = await response.json();
       setData(tasks);
     }
     if (eventOccurred) {
-      fetchData(date);
+      fetchData(date, userID);
       setEventOccurred(false);
     }
     displayEvents();
   }, [eventOccurred, date]);
 
-  async function fetchData(date) {
+  async function fetchData(date, userID) {
     const options = {
       headers: {
         Authorization: localStorage.getItem('token'),
       },
     };
-    console.log(date);
     const response = await fetch(
-      `http://localhost:3000/tasks/date/${date}`,
+      `http://localhost:3000/tasks/date/${date}/${userID}`,
       options
     );
     const tasks = await response.json();
@@ -125,7 +120,7 @@ export default function CalendarApp() {
     setDate(e);
     const dateToUse = e;
     const formattedDate = dateToUse.toLocaleDateString().replaceAll('/', '');
-    fetchData(formattedDate);
+    fetchData(formattedDate, userID);
   }
 
   function handleAddButtonClick() {
@@ -154,7 +149,6 @@ export default function CalendarApp() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(title, description);
     // Add event function using input value here
     if (title.length > 0 && description.length > 0) {
       fetch('http://localhost:3000/tasks/', {
@@ -198,7 +192,6 @@ export default function CalendarApp() {
   }
 
   async function handleDelete(id) {
-    console.log(id);
     const options = {
       method: 'DELETE',
       headers: {
@@ -292,27 +285,24 @@ export default function CalendarApp() {
     const [editDescription, setEditDescription] = useState(description);
     const [editDate, setEditDate] = useState(formatDate(date));
 
-    const handleUserIdInput = (e) => {
-      const newInput = e.target.value;
-      console.log(newInput);
-      setEditUserId(newInput);
-    };
+    // const handleUserIdInput = (e) => {
+    //   const newInput = e.target.value;
+    //   console.log(newInput);
+    //   setEditUserId(newInput);
+    // };
 
     const handleTitleInput = (e) => {
       const newInput = e.target.value;
-      console.log(newInput);
       setEditTitle(newInput);
     };
 
     const handleDescriptionInput = (e) => {
       const newInput = e.target.value;
-      console.log(newInput);
       setEditDescription(newInput);
     };
 
     const handleDateInput = (e) => {
       const newInput = e.target.value;
-      console.log(newInput);
       setEditDate(newInput);
     };
 
@@ -342,7 +332,6 @@ export default function CalendarApp() {
             setTimeout(() => {
               setMessage('');
             }, 5000);
-            console.log(editUserId, editTitle, editDescription, editDate);
             setEventOccurred(true);
           })
           .catch((err) => {

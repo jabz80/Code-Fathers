@@ -1,16 +1,19 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
+import { useTimer } from '../../contexts/PomodoroContext';
 
 // const styles = ({ isActive }) => ({ color: isActive ? '#3c7760' : '#875053' });
 
 export default function Header() {
+  const { isLoggedIn } = useTimer();
   return (
     <main>
       <header>
-        <nav className='navbar'>
+        <nav className="navbar">
           {/* <h1>Code Fathers</h1> */}
           <ul role="unorderedList">
             <li>
+
               <NavLink to="/">Home</NavLink>
             </li>
             <li>
@@ -21,7 +24,7 @@ export default function Header() {
             </li>
             <li>
               <NavLink to="/timer">Timer</NavLink>
-            </li>
+           </li>
             {/* <li>
               <NavLink to="/register" style={styles}><button>Register</button></NavLink>
             </li> */}
@@ -29,7 +32,7 @@ export default function Header() {
               <NavLink to="/about">About</NavLink>
             </li>
           </ul>
-              <NavLink id="loginButton" to="/login">Login</NavLink>
+              <NavLink id="loginButton" to="/login">{isLoggedIn ? 'Logout' : 'Login'}</NavLink>
         </nav>
       </header>
       <Outlet />
@@ -37,5 +40,4 @@ export default function Header() {
   );
 }
 
-// style={styles}
 

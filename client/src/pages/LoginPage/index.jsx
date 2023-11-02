@@ -5,7 +5,8 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useTimer } from '../../contexts/PomodoroContext';
 
 export default function LoginPage() {
-  const { isLoggedIn, setIsLoggedIn, userID, setUserID } = useTimer();
+  const { isLoggedIn, setIsLoggedIn, userID, setUserID, setUsername } =
+    useTimer();
   const [formUsername, setFormUsername] = useState('');
   const [formPassword, setFormPassword] = useState('');
 
@@ -51,7 +52,8 @@ export default function LoginPage() {
       };
       const res = await fetch('http://localhost:3000/users/showId', option);
       const resData = await res.json();
-      setUserID(resData);
+      setUserID(resData.id);
+      setUsername(resData.name);
       console.log(userID);
       navigate('/');
     } else {
@@ -86,7 +88,9 @@ export default function LoginPage() {
             onChange={handlePassword}
           />
         </label>
-        <button type="submit" className='btn-submit'>Sign In</button>
+        <button type="submit" className="btn-submit">
+          Sign In
+        </button>
         <Link to="/register">
           <button className="btn-register">Register</button>
         </Link>
