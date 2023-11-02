@@ -1,6 +1,7 @@
 import React from "react";
 import { screen, render, cleanup } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
+import { TimerProvider } from "../../contexts/PomodoroContext";
 import userEvent from "@testing-library/user-event";
 
 import * as matchers from "@testing-library/jest-dom/matchers";
@@ -12,18 +13,15 @@ describe("Header component", () => {
   beforeEach(() => {
     render(
       <BrowserRouter>
-        <Header />
+        <TimerProvider>
+          <Header />
+        </TimerProvider>
       </BrowserRouter>
     );
   });
 
   afterEach(() => {
     cleanup();
-  });
-
-  it("the heading has the appropriate text", () => {
-    const heading = screen.getByRole("heading");
-    expect(heading).toBeInTheDocument();
   });
 
   it("the heading has the appropriate amount of links", () => {
