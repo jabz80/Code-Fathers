@@ -64,12 +64,13 @@ body {
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-bottom: 30px;
   background-color: #c6c3bb;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.399);
   width: 100vw;
   border-radius: 10px;
+  padding-left: 1%;
 }
 
 .navbar h1 {
@@ -226,6 +227,7 @@ button {
 }
 
 .note-card {
+  background-color: #ae9f80;
   margin: 0.5rem;
   border: 1px solid #444;
   border-radius: 20px;

@@ -22,6 +22,7 @@ async function show(req, res) {
 async function showByDate(req, res) {
   try {
     let date = req.params.date.toString();
+    const userID = parseInt(req.params.id)
     if (date.length === 7) {
       date = date.substr(0, 2) + '0' + date.substr(2);
     }
@@ -29,8 +30,7 @@ async function showByDate(req, res) {
     const month = date.substr(0, 2);
     const day = date.substr(2, 2);
 
-    const tasks = await Task.getByDate(year, month, day);
-    console.log(tasks);
+    const tasks = await Task.getByDate(year, month, day, userID);
     res.status(200).json(tasks);
   } catch (err) {
     res.status(500).json(err);

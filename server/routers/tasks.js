@@ -10,6 +10,6 @@ taskRouter.get('/:id', authenticator, taskController.show);
 taskRouter.post('/', authenticator, taskController.create);
 taskRouter.patch('/:id', authenticator, taskController.update);
 taskRouter.delete('/:id', authenticator, taskController.destroy);
-taskRouter.get('/date/:date', authenticator, taskController.showByDate);
+taskRouter.get('/date/:date/:id', authenticator, taskController.showByDate);
 
 module.exports = taskRouter;

@@ -38,6 +38,8 @@ export default function NotesPage() {
         );
         const respData = await resp.json();
 
+
+
         setNotes(respData);
       } catch (error) {
         console.log(error);
