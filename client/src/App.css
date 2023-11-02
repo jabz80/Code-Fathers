@@ -68,7 +68,7 @@ body {
   margin-bottom: 30px;
   background-color: #c6c3bb;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.399);
-  width: 60vw;
+  width: 100vw;
   border-radius: 10px;
   padding-left: 1%;
 }
@@ -98,7 +98,7 @@ body {
   transition: transform 0.3s, background-color 0.3s;
 }
 
-/* #loginButton {
+#loginButton {
   padding-right: 4rem;
   margin: 5px;
 }
@@ -111,7 +111,7 @@ body {
   background-color: rgb(93, 148, 121);
   transition: transform 0.3s, background-color 0.3s;
   padding-right: 20px;
-} */
+}
 
 .navbar li button:hover {
   color: #ffffff;
@@ -413,4 +413,25 @@ button {
 button {
   background-color: #3c7760 !important;
   color: white;
+}
+
+.btn-register {
+  width: 142px;
+  margin: 40px;
+  transition: transform 0.3s, background-color 0.3s;
+
+}
+
+.btn-register:hover {
+  background-color: #3c7760;
+  transform: scale(1.1);
+}
+
+.btn-submit {
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.btn-submit:hover {
+  background-color: #3c7760;
+  transform: scale(1.1);
 }

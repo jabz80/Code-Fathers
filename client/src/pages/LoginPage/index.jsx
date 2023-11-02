@@ -86,8 +86,10 @@ export default function LoginPage() {
             onChange={handlePassword}
           />
         </label>
-        <button type="submit">Submit</button>
-        <Link to="/register" ><button className='btn-register'>Register</button></Link>
+        <button type="submit" className='btn-submit'>Sign In</button>
+        <Link to="/register">
+          <button className="btn-register">Register</button>
+        </Link>
       </form>
     </div>
   );

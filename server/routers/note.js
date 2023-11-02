@@ -10,6 +10,6 @@ noteRouter.get('/:id', authenticator, noteController.show);
 noteRouter.post('/', authenticator, noteController.create);
 noteRouter.patch('/:id', authenticator, noteController.update);
 noteRouter.delete('/:id', authenticator, noteController.destroy);
-noteRouter.post('/show/user_id', noteController.showAllForUser);
+noteRouter.post('/show/user_id', authenticator, noteController.showAllForUser);
 
 module.exports = noteRouter;

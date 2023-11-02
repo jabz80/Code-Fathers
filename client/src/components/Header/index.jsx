@@ -28,10 +28,8 @@ export default function Header() {
             <li>
               <NavLink to="/about" style={styles}><button>About</button></NavLink>
             </li>
-            <li>
-              <NavLink to="/login" style={styles}><button>Login</button></NavLink>
-            </li>
           </ul>
+              <NavLink id="loginButton" to="/login" style={styles}><button>Login</button></NavLink>
         </nav>
       </header>
       <Outlet />
