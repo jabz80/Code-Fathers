@@ -20,7 +20,7 @@ export default function NotesPage() {
         // };
         // const response = await fetch('http://localhost:3000/notes', options);
         // const data = await response.json();
-
+        console.log('loaded');
         const option = {
           method: 'POST',
           headers: {
@@ -37,7 +37,7 @@ export default function NotesPage() {
           option
         );
         const respData = await resp.json();
-        console.log(respData);
+
         setNotes(respData);
       } catch (error) {
         console.log(error);
