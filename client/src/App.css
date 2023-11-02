@@ -10,9 +10,8 @@ body {
 .login-page {
   position: relative;
   background-image: url("./src/assets/homepic.jpg");
-
   background-size: cover;
-  width: 100%;
+  width: 102%;
   height: 100vh;
   overflow: hidden;
 }
@@ -21,7 +20,7 @@ body {
   position: relative;
   background-image: url("./src/assets/homepic.jpg");
   background-size: cover;
-  width: 100%;
+  width: 102%;
   height: 100vh;
   overflow: hidden;
 }
@@ -30,7 +29,7 @@ body {
   position: relative;
   background-image: url("./src/assets/homepic.jpg");
   background-size: cover;
-  width: 105%;
+  width: 102%;
   height: 100vh;
   overflow: hidden;
 }
@@ -119,7 +118,7 @@ body {
 #loginButton {
   color: rgb(175, 61, 61);
   padding-right: 4rem;
-  margin: 5px;
+  margin-left: auto;
   text-decoration: none;
   font-size: 25px;
   width: 150px;
