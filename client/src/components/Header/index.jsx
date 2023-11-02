@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 
-const styles = ({ isActive }) => ({ color: isActive ? '#2B061E' : '#875053' });
+// const styles = ({ isActive }) => ({ color: isActive ? '#3c7760' : '#875053' });
 
 export default function Header() {
   return (
@@ -11,28 +11,31 @@ export default function Header() {
           {/* <h1>Code Fathers</h1> */}
           <ul role="unorderedList">
             <li>
-              <NavLink to="/" style={styles}><button>Home</button></NavLink>
+              <NavLink to="/">Home</NavLink>
             </li>
             <li>
-              <NavLink to="/calendar" style={styles}><button>Calendar</button></NavLink>
+              <NavLink to="/calendar" >Calendar</NavLink>
             </li>
             <li>
-              <NavLink to="/notes" style={styles}><button>Notes</button></NavLink>
+              <NavLink to="/notes" >Notes</NavLink>
             </li>
             <li>
-              <NavLink to="/timer" style={styles}><button>Timer</button></NavLink>
+              <NavLink to="/timer">Timer</NavLink>
             </li>
             {/* <li>
               <NavLink to="/register" style={styles}><button>Register</button></NavLink>
             </li> */}
             <li>
-              <NavLink to="/about" style={styles}><button>About</button></NavLink>
+              <NavLink to="/about">About</NavLink>
             </li>
           </ul>
-              <NavLink id="loginButton" to="/login" style={styles}><button>Login</button></NavLink>
+              <NavLink id="loginButton" to="/login">Login</NavLink>
         </nav>
       </header>
       <Outlet />
     </main>
   );
 }
+
+// style={styles}
+
