@@ -7,7 +7,7 @@ export default function CalendarApp() {
   const [date, setDate] = useState(null);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [message, setMessage] = useState('A');
+  const [message, setMessage] = useState('');
   const [userId, setUserId] = useState('');
   const [data, setData] = useState(null);
   const [editingEvent, setEditingEvent] = useState(null);
@@ -15,15 +15,16 @@ export default function CalendarApp() {
   const [editToggle, setEditToggle] = useState(false);
   const [eventOccurred, setEventOccurred] = useState(false);
 
-  const { userID } = useTimer();
+  const { userID, username } = useTimer();
   useEffect(() => {
     function displayEvents() {
       const formattedDate = date ? date.toLocaleDateString() : '';
+      console.log(formattedDate);
       
       return (
         <>
           <Calendar onChange={handleChange} value={date} className="calender" />
-          <p>{formattedDate}</p>
+          <p className='displayDate'>{formattedDate}</p>
             {formattedDate ? (
             <button onClick={() => handleAddButtonClick()}>Add Event</button>
           ) : null}
@@ -213,8 +214,10 @@ export default function CalendarApp() {
 
     return (
       <>
+        <h1>{username}'s Calendar</h1>
         <Calendar onChange={handleChange} value={date} className="calender" />
         <p>{formattedDate}</p>
+        <p className="message">{message}</p>
         {formattedDate ? (
           <button onClick={() => handleAddButtonClick()}>Add Event</button>
         ) : null}
@@ -239,7 +242,6 @@ export default function CalendarApp() {
             />
             <br></br>
             <input type="submit" value="Add Event" />
-            <p className="message">{message}</p>
           </form>
         )}
 
