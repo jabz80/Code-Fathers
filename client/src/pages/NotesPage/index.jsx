@@ -49,7 +49,7 @@ export default function NotesPage() {
     }
 
     loadNotes();
-  }, []);
+  }, [notes]);
 
   function displayNotes() {
     try {
@@ -85,7 +85,7 @@ export default function NotesPage() {
         Add a Note
       </Link>
       <NoteFilters textFilter={textFilter} setTextFilter={setTextFilter} />
-      <div className="note-holder">{displayNotes()}</div>
+      <div className="note-holder" role='note-holder'>{displayNotes()}</div>
     </main>
   );
 }
