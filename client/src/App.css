@@ -31,7 +31,6 @@ body {
 
 .banner h1 {
   font-size: 2em;
-  margin-top: 300px;
   text-align: center;
   color:rgba(4, 0, 0, 0.746);
 }
@@ -73,11 +72,11 @@ body {
   padding-left: 1%;
 }
 
-.navbar h1 {
+/* .navbar h1 {
   font-size: 40px;
   font-family: monospace;
   color: rgba(0, 0, 0, 0.4);
-}
+} */
 
 .navbar ul {
   display: flex;
@@ -86,15 +85,15 @@ body {
 
 .navbar li {
   padding-left: 1rem;
-  margin: 5px;
+  margin: 0.313rem;
 }
 
 .navbar li a {
   text-decoration: none;
   color: rgb(175, 61, 61);
   font-size: 25px;
-  width: 150px;
-  padding: 25px;
+  width: 9.375rem;
+  padding: 1.563rem;
 }
 
 #loginButton {
