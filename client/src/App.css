@@ -413,3 +413,24 @@ button {
   background-color: #3c7760 !important;
   color: white;
 }
+
+.btn-register {
+  width: 142px;
+  margin: 40px;
+  transition: transform 0.3s, background-color 0.3s;
+
+}
+
+.btn-register:hover {
+  background-color: #3c7760;
+  transform: scale(1.1);
+}
+
+.btn-submit {
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.btn-submit:hover {
+  background-color: #3c7760;
+  transform: scale(1.1);
+}
