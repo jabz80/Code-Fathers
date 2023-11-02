@@ -3,13 +3,34 @@
 body {
   font-family: 'Poppins', sans-serif;
   font-size: 24px;
+
+ 
+}
+
+.login-page {
+  position: relative;
+  background-image: url("./src/assets/homepic.jpg");
+
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.register-page {
+  position: relative;
   background-image: url("./src/assets/homepic.jpg");
   background-size: cover;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .banner {
   position: relative;
-  width: 100%;
+  background-image: url("./src/assets/homepic.jpg");
+  background-size: cover;
+  width: 105%;
   height: 100vh;
   overflow: hidden;
 }
@@ -31,15 +52,16 @@ body {
 
 .banner h1 {
   font-size: 2em;
-  margin-top: 300px;
+
+
   text-align: center;
-  color:rgba(4, 0, 0, 0.746);
+  color: rgba(4, 0, 0, 0.746);
 }
 
 .banner em {
   font-size: 1.4em;
   margin-bottom: 20px;
-  color:rgba(4, 0, 0, 0.746);
+  color: rgba(4, 0, 0, 0.746);
 }
 
 .banner button {
@@ -54,18 +76,15 @@ body {
   cursor: pointer;
 }
 
-
 .banner button:hover {
   background-color: #3c7760;
   transform: scale(1.1);
 }
 
-
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  margin-bottom: 30px;
   background-color: #c6c3bb;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.399);
   width: 100vw;
@@ -73,11 +92,11 @@ body {
   padding-left: 1%;
 }
 
-.navbar h1 {
+/* .navbar h1 {
   font-size: 40px;
   font-family: monospace;
   color: rgba(0, 0, 0, 0.4);
-}
+} */
 
 .navbar ul {
   display: flex;
@@ -86,15 +105,15 @@ body {
 
 .navbar li {
   padding-left: 1rem;
-  margin: 5px;
+  margin: 0.313rem;
 }
 
 .navbar li a {
   text-decoration: none;
   color: rgb(175, 61, 61);
   font-size: 25px;
-  width: 150px;
-  padding: 25px;
+  width: 9.375rem;
+  padding: 1.563rem;
 }
 
 #loginButton {
@@ -106,7 +125,6 @@ body {
   width: 150px;
   transition: transform 0.3s, background-color 0.3s;
   padding-right: 20px;
-  
 }
 
 #loginButton:hover {
@@ -127,7 +145,6 @@ body {
 .navbar li a:focus {
   color: rgb(59, 102, 81);
 }
-
 
 @media screen and (max-width: 800px) {
   .navbar {
@@ -273,7 +290,6 @@ button {
   width: 150px;
   background-color: rgb(93, 148, 121);
   transition: transform 0.3s, background-color 0.3s;
-
 }
 
 .add-note-btn:hover {
@@ -290,11 +306,14 @@ button {
 }
 
 .footer {
+  position: absolute;
   bottom: 0;
   left: 0;
-  margin: 40px;
-  width: 95vw;
-  height: 100px;
+  width: 100%; /* Change this to 100% to span the entire width of the viewport */
+  height: 10px; /* height from bottom of page*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer p {
@@ -307,7 +326,6 @@ button {
   color: white;
 }
 
-
 .login-header {
   display: flex;
   justify-content: center;
@@ -318,7 +336,6 @@ button {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-
 }
 
 .login-username input {
@@ -332,6 +349,18 @@ button {
   margin-bottom: 50px;
 }
 
+.register-container {
+  margin: 0 auto;
+  margin-top: 200px;
+  border: 1px solid;
+  width: 800px;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.399);
+  background-color: #c5c2c2e4;
+  opacity: 0.8;
+}
+
 .register-header {
   display: flex;
   justify-content: center;
@@ -342,7 +371,6 @@ button {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-
 }
 
 .register-name input {
@@ -366,6 +394,18 @@ button {
   color: white;
 }
 
+.login {
+  margin: 0 auto;
+  margin-top: 200px;
+  border: 1px solid;
+  width: 800px;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.399);
+  background-color: #c5c2c2e4;
+  opacity: 0.8;
+}
+
 .login-header {
   display: flex;
   justify-content: center;
@@ -376,7 +416,6 @@ button {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-
 }
 
 .login-username input {
@@ -391,7 +430,6 @@ button {
   margin-bottom: 50px;
 }
 
-
 .register-header {
   display: flex;
   justify-content: center;
@@ -402,7 +440,6 @@ button {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-
 }
 
 .register-name input {
@@ -428,9 +465,9 @@ button {
 
 .btn-register {
   width: 142px;
-  margin: 40px;
+  margin: 20px;
+  padding: 10px;
   transition: transform 0.3s, background-color 0.3s;
-
 }
 
 .btn-register:hover {
@@ -439,6 +476,9 @@ button {
 }
 
 .btn-submit {
+  width: 142px;
+  margin: 20px;
+  padding: 10px;
   transition: transform 0.3s, background-color 0.3s;
 }
 
