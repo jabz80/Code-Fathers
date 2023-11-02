@@ -7,24 +7,22 @@ export default function CalendarApp() {
   const [date, setDate] = useState(null);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [message, setMessage] = useState('A');
+  const [message, setMessage] = useState('');
   const [userId, setUserId] = useState('');
   const [data, setData] = useState(null);
   const [editingEvent, setEditingEvent] = useState(null);
   const [addToggle, setAddToggle] = useState(false);
   const [editToggle, setEditToggle] = useState(false);
   const [eventOccurred, setEventOccurred] = useState(false);
-
   const { userID } = useTimer();
   useEffect(() => {
     function displayEvents() {
       const formattedDate = date ? date.toLocaleDateString() : '';
-      
       return (
         <>
           <Calendar onChange={handleChange} value={date} className="calender" />
-          <p>{formattedDate}</p>
-            {formattedDate ? (
+          <p className="displayDate">{formattedDate}</p>
+          {formattedDate ? (
             <button onClick={() => handleAddButtonClick()}>Add Event</button>
           ) : null}
           {addToggle == true && (
@@ -77,14 +75,12 @@ export default function CalendarApp() {
         </>
       );
     }
-
     async function fetchData(date, userID) {
       const options = {
         headers: {
           Authorization: localStorage.getItem('token'),
         },
       };
-
       let formattedDate = date ? date.toLocaleDateString() : '';
       formattedDate = formattedDate.replaceAll('/', '');
       const response = await fetch(
@@ -100,7 +96,6 @@ export default function CalendarApp() {
     }
     displayEvents();
   }, [eventOccurred, date]);
-
   async function fetchData(date, userID) {
     const options = {
       headers: {
@@ -114,7 +109,6 @@ export default function CalendarApp() {
     const tasks = await response.json();
     setData(tasks);
   }
-
   async function handleChange(e) {
     setData(null);
     setDate(e);
@@ -122,31 +116,25 @@ export default function CalendarApp() {
     const formattedDate = dateToUse.toLocaleDateString().replaceAll('/', '');
     fetchData(formattedDate, userID);
   }
-
   function handleAddButtonClick() {
     setAddToggle(!addToggle);
   }
-
   function handleEditButtonClick(eventId) {
     setEditingEvent(eventId);
     setEditToggle(!editToggle);
   }
-
   function handleUserIdInput(e) {
     const newInput = e.target.value;
     setUserId(newInput);
   }
-
   function handleTitleInput(e) {
     const newInput = e.target.value;
     setTitle(newInput);
   }
-
   function handleDescriptionInput(e) {
     const newInput = e.target.value;
     setDescription(newInput);
   }
-
   function handleSubmit(e) {
     e.preventDefault();
     // Add event function using input value here
@@ -190,7 +178,6 @@ export default function CalendarApp() {
       }, 5000);
     }
   }
-
   async function handleDelete(id) {
     const options = {
       method: 'DELETE',
@@ -207,10 +194,8 @@ export default function CalendarApp() {
       console.error('Delete failed');
     }
   }
-
   function displayEvents() {
     const formattedDate = date ? date.toLocaleDateString() : '';
-
     return (
       <>
         <Calendar onChange={handleChange} value={date} className="calender" />
@@ -242,7 +227,6 @@ export default function CalendarApp() {
             <p className="message">{message}</p>
           </form>
         )}
-
         <div>
           {Array.isArray(data) &&
             data.map((item, index) => (
@@ -270,7 +254,6 @@ export default function CalendarApp() {
       </>
     );
   }
-
   function EditForm({ taskId, userId, title, description, date }) {
     const formatDate = (date) => {
       if (!date) return '';
@@ -279,33 +262,27 @@ export default function CalendarApp() {
       const day = String(date.slice(8, 10));
       return `${year}-${month}-${day}`;
     };
-
     //const [editUserId, setEditUserId] = useState(userId);
     const [editTitle, setEditTitle] = useState(title);
     const [editDescription, setEditDescription] = useState(description);
     const [editDate, setEditDate] = useState(formatDate(date));
-
     // const handleUserIdInput = (e) => {
     //   const newInput = e.target.value;
     //   console.log(newInput);
     //   setEditUserId(newInput);
     // };
-
     const handleTitleInput = (e) => {
       const newInput = e.target.value;
       setEditTitle(newInput);
     };
-
     const handleDescriptionInput = (e) => {
       const newInput = e.target.value;
       setEditDescription(newInput);
     };
-
     const handleDateInput = (e) => {
       const newInput = e.target.value;
       setEditDate(newInput);
     };
-
     const handleEditSubmit = (e) => {
       e.preventDefault();
       if (
@@ -353,7 +330,6 @@ export default function CalendarApp() {
         }, 5000);
       }
     };
-
     return (
       <form onSubmit={handleEditSubmit}>
         <label htmlFor="titleEdit">Edit event title here:</label>
@@ -386,6 +362,5 @@ export default function CalendarApp() {
       </form>
     );
   }
-
   return displayEvents();
 }
