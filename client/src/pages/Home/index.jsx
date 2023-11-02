@@ -7,7 +7,6 @@ export default function HomePage() {
   return (
     <div className="banner">
       {isLoggedIn ? <h1>Hi, {username}!</h1> : ''}
-
       <h1>Welcome to ReviseHub</h1>
       {/* <img src="./src/assets/homepic.jpg" alt="homepage pic" /> */}
       <div className="banner-content">

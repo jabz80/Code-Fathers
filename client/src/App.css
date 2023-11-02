@@ -31,7 +31,7 @@ body {
 
 .banner h1 {
   font-size: 2em;
-  margin-bottom: 30px;
+  margin-top: 300px;
   text-align: center;
   color:rgba(4, 0, 0, 0.746);
 }
@@ -89,35 +89,45 @@ body {
   margin: 5px;
 }
 
-.navbar li button {
+.navbar li a {
   text-decoration: none;
-  color: white;
-  font-size: 17px;
+  color: rgb(175, 61, 61);
+  font-size: 25px;
   width: 150px;
-  background-color: rgb(93, 148, 121);
-  transition: transform 0.3s, background-color 0.3s;
+  padding: 25px;
 }
 
 #loginButton {
+  color: rgb(175, 61, 61);
   padding-right: 4rem;
   margin: 5px;
-}
-
-#loginButton button {
   text-decoration: none;
-  color: white;
-  font-size: 17px;
+  font-size: 25px;
   width: 150px;
-  background-color: rgb(93, 148, 121);
   transition: transform 0.3s, background-color 0.3s;
   padding-right: 20px;
+  
 }
 
-.navbar li button:hover {
-  color: #ffffff;
-  background-color: #3c7760;
-  transform: scale(1.1);
+#loginButton:hover {
+  text-decoration: none;
+  color: #52a365;
+  transition: transform 0.3s, background-color 0.3s;
 }
+
+#loginButton:focus {
+  color: rgb(59, 102, 81);
+}
+
+.navbar li a:hover {
+  color: #52a365;
+  transition: transform 0.3s, background-color 0.3s, color 0.3s;
+}
+
+.navbar li a:focus {
+  color: rgb(59, 102, 81);
+}
+
 
 @media screen and (max-width: 800px) {
   .navbar {
