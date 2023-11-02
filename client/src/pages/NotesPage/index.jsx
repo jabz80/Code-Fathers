@@ -37,7 +37,6 @@ export default function NotesPage() {
           option
         );
         const respData = await resp.json();
-        console.log(respData);
         setNotes(respData);
       } catch (error) {
         console.log(error);
