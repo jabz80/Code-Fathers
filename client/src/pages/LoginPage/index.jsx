@@ -69,6 +69,7 @@ export default function LoginPage() {
   }, []);
 
   return (
+    <div className='login-page'>
     <div className="login">
       <h1 className="login-header">LOGIN</h1>
       <form className="login-form" onSubmit={handleSubmit}>
@@ -96,5 +97,6 @@ export default function LoginPage() {
         </Link>
       </form>
     </div>
+   </div> 
   );
 }

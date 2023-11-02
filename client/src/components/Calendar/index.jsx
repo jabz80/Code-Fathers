@@ -14,15 +14,19 @@ export default function CalendarApp() {
   const [addToggle, setAddToggle] = useState(false);
   const [editToggle, setEditToggle] = useState(false);
   const [eventOccurred, setEventOccurred] = useState(false);
-  const { userID } = useTimer();
+
+  const { userID, username } = useTimer();
+
   useEffect(() => {
     function displayEvents() {
       const formattedDate = date ? date.toLocaleDateString() : '';
       return (
         <>
           <Calendar onChange={handleChange} value={date} className="calender" />
-          <p className="displayDate">{formattedDate}</p>
-          {formattedDate ? (
+
+          <p className='displayDate'>{formattedDate}</p>
+            {formattedDate ? (
+
             <button onClick={() => handleAddButtonClick()}>Add Event</button>
           ) : null}
           {addToggle == true && (
@@ -198,8 +202,10 @@ export default function CalendarApp() {
     const formattedDate = date ? date.toLocaleDateString() : '';
     return (
       <>
+        <h1 role='userTitle'>{username}'s Calendar</h1>
         <Calendar onChange={handleChange} value={date} className="calender" />
         <p>{formattedDate}</p>
+        <p className="message">{message}</p>
         {formattedDate ? (
           <button onClick={() => handleAddButtonClick()}>Add Event</button>
         ) : null}
@@ -224,7 +230,6 @@ export default function CalendarApp() {
             />
             <br></br>
             <input type="submit" value="Add Event" />
-            <p className="message">{message}</p>
           </form>
         )}
         <div>

@@ -49,7 +49,7 @@ export default function NotesPage() {
     }
 
     loadNotes();
-  }, []);
+  }, [notes]);
 
   function displayNotes() {
     try {
