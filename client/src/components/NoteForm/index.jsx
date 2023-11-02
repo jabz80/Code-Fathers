@@ -1,4 +1,5 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+
 import { useTimer } from '../../contexts/PomodoroContext';
 
 export default function NoteForm({
@@ -10,9 +11,11 @@ export default function NoteForm({
   setMessage,
   type,
 }) {
-  const {userID} = useTimer()
 
-  const navigate = useNavigate()
+  const { userID } = useTimer();
+  const navigate = useNavigate();
+
+
   function handleInput(e) {
     setInputText(e.target.value);
   }
@@ -29,7 +32,9 @@ export default function NoteForm({
         await fetch(`http://localhost:3000/notes/`, {
           method: 'POST',
           body: JSON.stringify({
+
             //get current userid
+
             user_id: userID,
             title: inputText,
             context: context,

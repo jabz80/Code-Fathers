@@ -45,7 +45,8 @@ async function getUserId(req, res) {
   try {
     const response = await Token.getOneByToken(data.token);
     // const userID = await response.json();
-    res.status(200).json(response.user_id);
+    const resp = await User.getOneById(response.user_id);
+    res.status(200).json(resp);
   } catch (err) {
     res.status(404).json({ error: err.message });
   }

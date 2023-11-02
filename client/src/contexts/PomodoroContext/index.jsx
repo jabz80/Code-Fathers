@@ -15,6 +15,7 @@ export const TimerProvider = ({ children }) => {
   const [isActive, setIsActive] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userID, setUserID] = useState(0);
+  const [username, setUsername] = useState('');
 
   const toggleTimer = () => {
     setIsRunning(!isRunning);
@@ -101,6 +102,8 @@ export const TimerProvider = ({ children }) => {
         setIsLoggedIn,
         userID,
         setUserID,
+        username,
+        setUsername,
       }}
     >
       {children}
