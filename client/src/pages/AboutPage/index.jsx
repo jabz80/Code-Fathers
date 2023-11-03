@@ -1,4 +1,5 @@
 import React from 'react';
+import { Footer } from '../../components';
 
 function AboutPage() {
   return <div className='about-section'>
@@ -19,7 +20,10 @@ function AboutPage() {
     </ul>
     <h3>Getting Started</h3>
     <p>Getting started with our app is quick and easy. Sign up and your on your way to a more focused and productive work or study session.</p>
-  </div>;
+    <Footer />
+  </div>
+
 }
+
 
 export default AboutPage;

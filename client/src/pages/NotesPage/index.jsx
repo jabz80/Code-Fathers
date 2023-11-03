@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { NoteCard, NoteFilters } from '../../components';
+import { NoteCard, NoteFilters, Footer } from '../../components';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTimer } from '../../contexts/PomodoroContext';
 
@@ -86,6 +86,7 @@ export default function NotesPage() {
       </Link>
       <NoteFilters textFilter={textFilter} setTextFilter={setTextFilter} />
       <div className="note-holder" role='note-holder'>{displayNotes()}</div>
+      <Footer />
     </main>
   );
 }

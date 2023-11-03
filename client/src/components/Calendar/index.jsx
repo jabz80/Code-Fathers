@@ -18,67 +18,6 @@ export default function CalendarApp() {
   const { userID, username } = useTimer();
 
   useEffect(() => {
-    function displayEvents() {
-      const formattedDate = date ? date.toLocaleDateString() : '';
-      return (
-        <>
-          <Calendar onChange={handleChange} value={date} className="calender" />
-
-          <p className='displayDate'>{formattedDate}</p>
-            {formattedDate ? (
-
-            <button onClick={() => handleAddButtonClick()}>Add Event</button>
-          ) : null}
-          {addToggle == true && (
-            <form onSubmit={handleSubmit} className="container">
-              <br></br>
-              <label htmlFor="title">Add event title here:</label>
-              <input
-                type="text"
-                onChange={handleTitleInput}
-                id="title"
-                value={title}
-                required
-              />
-              <br></br>
-              <label htmlFor="event">Add event description here:</label>
-              <input
-                type="text"
-                onChange={handleDescriptionInput}
-                value={description}
-                id="event"
-              />
-              <br></br>
-              <input type="submit" value="Add Event" />
-            </form>
-          )}
-          <div>
-            {Array.isArray(data) &&
-              data.map((item, index) => (
-                <div key={index}>
-                  <h1>{item.task_title}</h1>
-                  <p>{item.task_description}</p>
-                  <button onClick={() => handleDelete(item.task_id)}>
-                    Delete Event
-                  </button>
-                  <button onClick={() => handleEditButtonClick(item.task_id)}>
-                    Edit Event
-                  </button>
-                  {editingEvent === item.task_id && editToggle == true && (
-                    <EditForm
-                      taskId={item.task_id}
-                      userId={item.user_id}
-                      title={item.task_title}
-                      description={item.task_description}
-                      date={item.task_date}
-                    />
-                  )}
-                </div>
-              ))}
-          </div>
-        </>
-      );
-    }
     async function fetchData(date, userID) {
       const options = {
         headers: {
