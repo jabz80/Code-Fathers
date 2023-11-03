@@ -5,7 +5,7 @@ const NoteFilters = ({ textFilter, setTextFilter }) => {
         setTextFilter(e.target.value);
     }
 
-    return <div className="note-filters">
+    return <div className="note-filters" role="note-filters">
        <label>Search:<input type="text" value={textFilter} onChange={updateTextFilter} /></label>
     </div>
 }

@@ -1,17 +1,20 @@
-import React from 'react';
-import { screen, render, cleanup } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
-
-import * as matchers from '@testing-library/jest-dom/matchers';
+import React from "react";
+import { screen, render, cleanup } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
+import { TimerProvider } from "../../contexts/PomodoroContext";
+import * as matchers from "@testing-library/jest-dom/matchers";
 expect.extend(matchers);
 
-import HomePage from '.';
 
-describe.skip('Homepage component', () => {
+import HomePage from ".";
+
+describe("Homepage component", () => {
   beforeEach(() => {
     render(
       <BrowserRouter>
-        <HomePage />
+        <TimerProvider>
+          <HomePage />
+        </TimerProvider>
       </BrowserRouter>
     );
   });
@@ -20,9 +23,13 @@ describe.skip('Homepage component', () => {
     cleanup();
   });
 
-  it('Displays a heading with appropriate text', () => {
-    const heading = screen.getByRole('heading');
-    expect(heading).toBeInTheDocument();
-    expect(heading.textContent).toBe('Welcome to the Crammer Revision App');
+
+  it("Displays a message with appropriate text", () => {
+    const message = screen.getByRole("message");
+    expect(message).toBeInTheDocument();
+    expect(message.textContent).toBe(
+      "Our all-in-one studying calendar, notes, and timer app"
+    );
+
   });
 });

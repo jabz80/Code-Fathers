@@ -38,6 +38,7 @@ export default function Pomodoro() {
       </div>
       <div>
         <CircularProgressbar
+          className={`glow-circle ${isRunning ? 'running' : ''}`}
           value={percentage}
           text={`${timerMinutes}:${timerSeconds}`}
           styles={buildStyles({

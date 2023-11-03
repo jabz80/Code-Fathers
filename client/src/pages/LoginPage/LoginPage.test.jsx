@@ -9,7 +9,7 @@ expect.extend(matchers);
 import LoginPage from '.';
 import { TimerProvider } from '../../contexts/PomodoroContext';
 
-describe.skip('Login Page', () => {
+describe('Login Page', () => {
   beforeEach(() => {
     render(
       <BrowserRouter>

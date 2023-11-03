@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
 import { useTimer } from '../../contexts/PomodoroContext';
+import { Footer } from '../../components';
 
 export default function LoginPage() {
   const { isLoggedIn, setIsLoggedIn, userID, setUserID, setUsername } =
@@ -69,6 +70,7 @@ export default function LoginPage() {
   }, []);
 
   return (
+    <div className='login-page'>
     <div className="login">
       <h1 className="login-header">LOGIN</h1>
       <form className="login-form" onSubmit={handleSubmit}>
@@ -96,5 +98,7 @@ export default function LoginPage() {
         </Link>
       </form>
     </div>
+    <Footer />
+   </div> 
   );
 }

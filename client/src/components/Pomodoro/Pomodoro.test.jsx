@@ -10,7 +10,7 @@ import Pomodoro from '.';
 import { TimerProvider } from '../../contexts/PomodoroContext';
 import { expect } from 'vitest';
 
-describe.skip('Pomodoro', () => {
+describe('Pomodoro', () => {
   beforeEach(() => {
     render(
       <BrowserRouter>
