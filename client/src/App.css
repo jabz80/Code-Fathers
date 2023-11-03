@@ -3,6 +3,7 @@
 body {
   font-family: 'Poppins', sans-serif;
   font-size: 24px;
+  position: relative;
  
 }
 
@@ -29,7 +30,7 @@ body {
   background-image: url("./src/assets/homepic.jpg");
   background-size: cover;
   width: 105%;
-  height: 100vh;
+  height: 105vh;
   overflow: hidden;
 }
 
@@ -50,7 +51,7 @@ body {
 
 .banner h1 {
   font-size: 2em;
-  margin-top: 300px;
+  margin-top: 120px;
   text-align: center;
   color:rgba(4, 0, 0, 0.746);
 }
@@ -85,16 +86,7 @@ body {
   align-items: center;
   justify-content: space-evenly;
   background-color: #c6c3bb;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.399);
   width: 100vw;
-  border-radius: 10px;
-  padding-left: 1%;
-}
-
-.navbar h1 {
-  font-size: 40px;
-  font-family: monospace;
-  color: rgba(0, 0, 0, 0.4);
 }
 
 .navbar ul {
@@ -110,9 +102,9 @@ body {
 .navbar li a {
   text-decoration: none;
   color: rgb(175, 61, 61);
-  font-size: 25px;
-  width: 150px;
-  padding: 25px;
+  font-size: 1.5rem;
+  width: 9.3rem;
+  padding: 1.5rem;
 }
 
 #loginButton {
@@ -169,7 +161,14 @@ body {
 .calender {
   text-align: center;
   width: 90vw;
+  margin-top: 1.5rem;
   margin-bottom: 50px;
+}
+
+.calender button {
+  color: rgb(11, 12, 12);
+  border: 1px solid black;
+  background-color: #bdbabadd;
 }
 
 input[type='text'],
@@ -255,11 +254,11 @@ button {
 }
 
 .note-card {
-  background-color: #ae9f80;
-  margin: 0.5rem;
-  border: 1px solid #444;
-  border-radius: 20px;
-  box-shadow: 5px 5px 5px #777;
+  background-color: #c3beb5;
+  margin: 1rem;
+  /* border: 1px solid #444; */
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #777777ef;
   width: 600px;
   display: flex;
   flex-direction: column;
@@ -267,40 +266,68 @@ button {
   position: relative;
 }
 
+.note-filters {
+  margin-bottom: 2rem;
+}
+
 .delete-note-btn {
   position: absolute;
+  font-size: medium;
+  height: 4dvh;
   bottom: 5%;
   right: 5%;
-  background-color: rgb(93, 148, 121);
+  background-color: #f9f5f5df;
+  transition: transform 0.3s, background-color 0.3s;
 }
+
+.delete-note-btn:hover {
+  background-color: #3c7760;
+  border-color: #646cff;
+  transform: scale(1.1);
+}
+  
 
 .update-note-btn {
   position: absolute;
+  font-size: medium;
+  height: 40px;
   bottom: 5%;
   left: 5%;
-  background-color: rgb(93, 148, 121);
+  background-color: #f9f5f5df;
+  transition: transform 0.3s, background-color 0.3s;
 }
+
+.update-note-btn:hover {
+  background-color: #3c7760;
+  border-color: #646cff;
+  transform: scale(1.1);
+}
+  
 
 .add-note-btn {
   text-decoration: none;
   padding: 12px;
   text-align: center;
+  margin-bottom: 40px;
   border-radius: 10px;
-  color: white;
+  color: rgb(15, 15, 15);
   font-size: 17px;
-  width: 150px;
-  background-color: rgb(93, 148, 121);
+  width: 130px;
+  background-color: #fff;
   transition: transform 0.3s, background-color 0.3s;
 
 }
 
 .add-note-btn:hover {
   background-color: #3c7760;
+  border-color: #646cff;
+  
   transform: scale(1.1);
 }
 
 .about-section {
   width: 95vw;
+  margin-bottom: 30px;
 }
 
 .about-section h1 {
@@ -311,8 +338,9 @@ button {
   position: absolute;
   bottom: 0;
   left: 0;
+  margin-top: 20px;
   width: 100%; /* Change this to 100% to span the entire width of the viewport */
-  height: 10px; /* height from bottom of page*/
+  height: 10; /* height from bottom of page*/
   display: flex;
   align-items: center;
   justify-content: center;
@@ -395,7 +423,7 @@ button {
 }
 
 button {
-  background-color: #3c7760 !important;
+  /* background-color: #3c7760 !important; */
   color: white;
 }
 
@@ -467,8 +495,8 @@ button {
 }
 
 button {
-  background-color: #3c7760 !important;
-  color: white;
+  background-color: #3c7760;
+  color: black;
 }
 
 .btn-register {

@@ -1,10 +1,11 @@
 import React from 'react'
-import { CalendarApp } from '../../components'
+import { CalendarApp,Footer } from '../../components'
 
 export default function index() {
   return (
     <div className='calender'>
     <CalendarApp />
+    <Footer />
     </div>
   )
 }
