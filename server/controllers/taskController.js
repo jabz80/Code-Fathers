@@ -22,7 +22,7 @@ async function show(req, res) {
 async function showByDate(req, res) {
   try {
     let date = req.params.date.toString();
-    const userID = parseInt(req.params.id)
+    const userID = parseInt(req.params.id);
     if (date.length === 7) {
       date = date.substr(0, 2) + '0' + date.substr(2);
     }
