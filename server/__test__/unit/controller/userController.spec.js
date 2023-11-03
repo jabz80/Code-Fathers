@@ -69,7 +69,7 @@ describe('User Controller', () => {
   });
 
   //CAN'T FIGURE OUT HOW TO MAKE IT PASS
-  describe.skip('login', () => {
+  describe('login', () => {
     it('successfully creates User and displays the 201 status code', async () => {
       const newUserData = {
         username: 'User 4',

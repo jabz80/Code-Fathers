@@ -33,8 +33,6 @@ export default function NoteForm({
           method: 'POST',
           body: JSON.stringify({
 
-            //get current userid
-
             user_id: userID,
             title: inputText,
             context: context,
@@ -109,6 +107,7 @@ export default function NoteForm({
     <form className="notes-form">
       <div>
         <input
+          role="input-text"
           placeholder="Note Title"
           id="note-text"
           value={inputText}
@@ -119,6 +118,7 @@ export default function NoteForm({
       </div>
       <div>
         <input
+          role="input-text"
           placeholder="Note context"
           id="note-context"
           value={context}

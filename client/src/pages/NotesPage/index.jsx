@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Notes, NoteCard, NoteFilters } from '../../components';
+import { NoteCard, NoteFilters } from '../../components';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTimer } from '../../contexts/PomodoroContext';
 

@@ -20,6 +20,8 @@ const NotePage = () => {
             }
             const response = await fetch(`http://localhost:3000/notes/${id}`, options);
             const data = await response.json();
+                  console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+console.log(data);
             setNote(data);
             setLoading(false);
         };
@@ -33,6 +35,7 @@ const NotePage = () => {
     }
 
     function displayNote() {
+
         return <main>
             <h1 className="close-title">{note.title}</h1>
             <p><em>{note.context}</em></p>

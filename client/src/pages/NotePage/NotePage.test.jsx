@@ -28,28 +28,37 @@ describe("NotePage component", () => {
     });
 
     it("Displays note details when the note is loaded", async () => {
-
         const sampleNote = {
             id: 1,
-            user_id: 1,
             title: 'Sample Note 1',
             context: 'This is a sample note.',
-            created_at: '2023-11-02T12:00:00Z',
-            updated_at: '2023-11-02T12:00:00Z',
         };
-
+    
         vi.spyOn(global, 'fetch').mockResolvedValueOnce({
             json: async () => sampleNote,
         });
-
-        await (location.pathname = "/notes/1")
-
-        await screen.findByText(sampleNote.title);
-        await screen.findByText(sampleNote.context);
-
+    
+        render(
+            <MemoryRouter initialEntries={['/notes/1']}>
+                <TimerProvider>
+                    <NotePage />
+                </TimerProvider>
+            </MemoryRouter>
+        );
+    
+        // Wait for the note to load asynchronously
+        await screen.findByText((content, element) => {
+            return content.includes(sampleNote.title) && element.tagName.toLowerCase() === 'h1';
+        });
+        await screen.findByText((content, element) => {
+            return content.includes(sampleNote.context) && element.tagName.toLowerCase() === 'em';
+        });
+    
+        // Assert that the title and context are displayed
         expect(screen.getByText(sampleNote.title)).toBeInTheDocument();
         expect(screen.getByText(sampleNote.context)).toBeInTheDocument();
     });
+    
 
     it("Navigates back to notes page when 'Back' button is clicked", async () => {
 
