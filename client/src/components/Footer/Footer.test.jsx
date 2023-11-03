@@ -7,7 +7,7 @@ expect.extend(matchers);
 
 import Footer from '.';
 
-describe.skip('Footer component', () => {
+describe('Footer component', () => {
   beforeEach(() => {
     render(
       <BrowserRouter>

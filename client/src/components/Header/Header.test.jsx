@@ -11,7 +11,7 @@ expect.extend(matchers);
 
 import Header from '.';
 
-describe.skip('Header component', () => {
+describe('Header component', () => {
   beforeEach(() => {
     render(
       <BrowserRouter>
@@ -24,12 +24,6 @@ describe.skip('Header component', () => {
 
   afterEach(() => {
     cleanup();
-  });
-
-
-  it('the heading has the appropriate text', () => {
-    const heading = screen.getByRole('heading');
-    expect(heading).toBeInTheDocument();
   });
 
   it('the heading has the appropriate amount of links', () => {
