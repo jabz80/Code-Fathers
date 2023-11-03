@@ -5,7 +5,6 @@ DROP TABLE IF EXISTS Users;
 
 SET TIME ZONE 'Europe/London';
 
-
 CREATE TABLE Users (
     user_id INT GENERATED ALWAYS AS IDENTITY,
     username VARCHAR(50) UNIQUE NOT NULL ,
