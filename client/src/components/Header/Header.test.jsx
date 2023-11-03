@@ -26,10 +26,6 @@ describe('Header component', () => {
     cleanup();
   });
 
-<<<<<<< HEAD
-
-=======
->>>>>>> eaeebfc1a0d940736615778e8e5df62978ea5ce0
   it('the heading has the appropriate amount of links', () => {
     const navigation = screen.getByRole('navigation');
     const list = screen.getByRole('unorderedList');
