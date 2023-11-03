@@ -24,8 +24,8 @@ export default function CalendarApp() {
           Authorization: localStorage.getItem('token'),
         },
       };
-      let formattedDate = date ? date.toLocaleDateString("uk") : '';
-      formattedDate = formattedDate.replaceAll('.', '');
+      let formattedDate = date ? date.toLocaleDateString() : '';
+      formattedDate = formattedDate.replaceAll('/', '');
       const response = await fetch(
         `http://localhost:3000/tasks/date/${formattedDate}/${userID}`,
         options
@@ -56,7 +56,7 @@ export default function CalendarApp() {
     setData(null);
     setDate(e);
     const dateToUse = e;
-    const formattedDate = dateToUse.toLocaleDateString("uk").replaceAll('.', '');
+    const formattedDate = dateToUse.toLocaleDateString().replaceAll('/', '');
     fetchData(formattedDate, userID);
   }
   function handleAddButtonClick() {
@@ -138,7 +138,7 @@ export default function CalendarApp() {
     }
   }
   function displayEvents() {
-    const formattedDate = date ? date.toLocaleDateString("uk") : '';
+    const formattedDate = date ? date.toLocaleDateString() : '';
     return (
       <>
         <h1 role='userTitle'>{username}'s Calendar</h1>
