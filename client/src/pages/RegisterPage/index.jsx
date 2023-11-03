@@ -50,38 +50,43 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className='register-page'>
-    <div className='register-container'>
-      <h1 className="register-header">REGISTER</h1>
-      <form className="register-form" onSubmit={handleSubmit}>
-        <label className="register-name">
-          Full Name:
-          <input
-            type="text"
-            placeholder="Enter Full Name"
-            onChange={handleName}
-          />
-        </label>
-        <label className="register-username">
-          Username:
-          <input
-            type="text"
-            placeholder="Enter Username"
-            onChange={handleInput}
-          />
-        </label>
-        <label className="register-password">
-          Password:
-          <input
-            type="password"
-            placeholder="Enter Password"
-            onChange={handlePassword}
-          />
-        </label>
-        <button type="submit" className='btn-submit'>Submit</button>
-      </form>
+    <div className="register-page">
+      <div className="register-container">
+        <h1 className="register-header">REGISTER</h1>
+        <form className="register-form" onSubmit={handleSubmit}>
+          <label className="register-name">
+            Full Name:
+            <input
+              type="text"
+              placeholder="Enter Full Name"
+              onChange={handleName}
+              required
+            />
+          </label>
+          <label className="register-username">
+            Username:
+            <input
+              type="text"
+              placeholder="Enter Username"
+              onChange={handleInput}
+              required
+            />
+          </label>
+          <label className="register-password">
+            Password:
+            <input
+              type="password"
+              placeholder="Enter Password"
+              onChange={handlePassword}
+              required
+            />
+          </label>
+          <button type="submit" className="btn-submit">
+            Submit
+          </button>
+        </form>
+      </div>
+      <Footer />
     </div>
-    <Footer />
-   </div>
   );
 }
