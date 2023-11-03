@@ -1,24 +1,29 @@
-import React from 'react';
-import { screen, render, cleanup } from '@testing-library/react';
-import { BrowserRouter, MemoryRouter } from 'react-router-dom';
-import userEvent from '@testing-library/user-event';
+import React from "react";
+import { screen, render, cleanup } from "@testing-library/react";
+import { BrowserRouter, MemoryRouter } from "react-router-dom";
+import userEvent from "@testing-library/user-event";
 
-import { TimerProvider } from '../../contexts/PomodoroContext';
+import { TimerProvider } from "../../contexts/PomodoroContext";
 
-import * as matchers from '@testing-library/jest-dom/matchers';
+import * as matchers from "@testing-library/jest-dom/matchers";
 expect.extend(matchers);
 
-import NotePage from '.';
+import NotePage from ".";
 
 describe("NotePage component", () => {
+  beforeEach(() => {
+    render(
+      <BrowserRouter>
+        <TimerProvider>
+          <NotePage />
+        </TimerProvider>
+      </BrowserRouter>
+    );
+  });
 
-    beforeEach(() => {
-        render(<BrowserRouter><TimerProvider><NotePage /></TimerProvider></BrowserRouter>);
-    });
-
-    afterEach(() => {
-        cleanup();
-    });
+  afterEach(() => {
+    cleanup();
+  });
 
     it("Displays loading message while fetching note", async () => {
 

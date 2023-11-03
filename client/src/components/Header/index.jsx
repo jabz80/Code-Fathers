@@ -25,9 +25,6 @@ export default function Header() {
             <li>
               <NavLink to="/timer">Timer</NavLink>
            </li>
-            {/* <li>
-              <NavLink to="/register" style={styles}><button>Register</button></NavLink>
-            </li> */}
             <li>
               <NavLink to="/about">About</NavLink>
             </li>
