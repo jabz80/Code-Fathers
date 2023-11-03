@@ -210,11 +210,7 @@ export default function CalendarApp() {
     const [editTitle, setEditTitle] = useState(title);
     const [editDescription, setEditDescription] = useState(description);
     const [editDate, setEditDate] = useState(formatDate(date));
-    // const handleUserIdInput = (e) => {
-    //   const newInput = e.target.value;
-    //   console.log(newInput);
-    //   setEditUserId(newInput);
-    // };
+
     const handleTitleInput = (e) => {
       const newInput = e.target.value;
       setEditTitle(newInput);

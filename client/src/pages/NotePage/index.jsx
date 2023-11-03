@@ -20,8 +20,6 @@ const NotePage = () => {
             }
             const response = await fetch(`http://localhost:3000/notes/${id}`, options);
             const data = await response.json();
-                  console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-console.log(data);
             setNote(data);
             setLoading(false);
         };

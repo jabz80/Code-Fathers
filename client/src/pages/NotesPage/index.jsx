@@ -13,14 +13,7 @@ export default function NotesPage() {
     //change fetch so it grabs all notes for 1 id
     async function loadNotes() {
       try {
-        // const options = {
-        //   headers: {
-        //     Authorization: localStorage.getItem('token'),
-        //   },
-        // };
-        // const response = await fetch('http://localhost:3000/notes', options);
-        // const data = await response.json();
-        console.log('loaded');
+
         const option = {
           method: 'POST',
           headers: {

@@ -55,7 +55,6 @@ export default function LoginPage() {
       const resData = await res.json();
       setUserID(resData.id);
       setUsername(resData.name);
-      console.log(userID);
       navigate('/');
     } else {
       alert(data.error);
