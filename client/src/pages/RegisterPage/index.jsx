@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Footer } from '../../components';
 
 export default function RegisterPage() {
   const [formUsername, setFormUsername] = useState('');
@@ -80,6 +81,7 @@ export default function RegisterPage() {
         <button type="submit" className='btn-submit'>Submit</button>
       </form>
     </div>
+    <Footer />
    </div>
   );
 }
